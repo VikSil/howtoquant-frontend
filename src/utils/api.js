@@ -3,7 +3,7 @@ import axios from "axios";
 const APIroot = "http://127.0.0.1:8000/" 
 
 export const getIdentifierTypes = () => {
-    let URL = APIroot+"staticdata/api/identifier_types";
+    let URL = "http://127.0.0.1:8000/staticdata/api/identifier_types";
 
     return axios
       .get(URL)
