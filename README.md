@@ -1,0 +1,3 @@
+# How To Quant
+
+This is going to be a README for the "How To Quant" project. Full description to follow...
