@@ -1,4 +1,4 @@
-import './App.css'
+import './assets/css/App.css'
 
 import {Routes, Route} from 'react-router-dom';
 import { useEffect, useState } from 'react'
@@ -29,10 +29,12 @@ function App() {
   let content = (
     <>
     <TitleBar />
-    <NavPane />
-    <Routes>
-      <Route path = "/" element = {<MainArea/>} />
-    </Routes>
+    <section className = "d-flex">
+      <NavPane />
+      <Routes>
+        <Route path = "/" element = {<MainArea/>} />
+      </Routes>
+    </section >
     </>
   )
 

@@ -1,0 +1,26 @@
+header p {
+  margin-bottom: 0px;
+  color: lightyellow;
+}
+
+.green-header {
+  background-color: darkolivegreen;
+}
+
+.decorative-strips {
+  background-color: moccasin;
+}
+
+.title {
+  font-size: x-large;
+}
+
+.logo {
+  width: 4rem;
+  height: 4rem;
+  border-color: moccasin;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.4rem;
+  
+}
