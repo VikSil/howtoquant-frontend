@@ -29,7 +29,7 @@ function App() {
   let content = (
     <>
     <TitleBar />
-    <section className = "d-flex">
+    <section className = "d-flex max-height">
       <NavPane />
       <Routes>
         <Route path = "/" element = {<MainArea/>} />

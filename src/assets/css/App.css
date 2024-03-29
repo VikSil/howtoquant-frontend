@@ -1,7 +1,20 @@
+html, body, #root {
+    height: 100%;
+}
+
 body {
-  font-family: 'Financier Display', 'Argesta Display Regular','Cambria', serif;
+  font-family: "Financier Display", "ArgestaHairline", sans-serif;
+   
 }
 
 body p {
-  font-size: x-small;
+  font-size: large;
+}
+
+body, .max-height{
+    min-height: 100%;
+}
+
+.green-bckgr {
+  background-color: darkolivegreen;
 }

@@ -1,0 +1,41 @@
+#section-accordion {
+border-color: moccasin;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 0.4rem;
+
+}
+
+.accordion-item {
+    border: none;
+    color:lightyellow
+}
+
+.accordion-item:first-of-type {
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+}
+
+.accordion-collapse {
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.accordion-body {
+    background-color: moccasin;
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    color: darkolivegreen;
+}
+
+.accordion-body p {
+    font-size: medium;
+    margin-bottom: 0px;
+}
+
+.accordion-body p:hover {
+    background-color:rgba(85,107,47,0.3);
+}
