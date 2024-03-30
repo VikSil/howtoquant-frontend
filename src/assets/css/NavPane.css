@@ -6,9 +6,8 @@ border-color: moccasin;
 
 }
 
-.accordion-item {
-    border: none;
-    color:lightyellow
+.accordion-item p {
+    color:lightyellow;
 }
 
 .accordion-item:first-of-type {

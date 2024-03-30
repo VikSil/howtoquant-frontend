@@ -11,7 +11,7 @@ export default function NavSection(props){
         <>
             
             <div className="accordion mx-2 my-1" id = "section-accordion">
-                <div className="accordion-item green-bckgr text-center py-1 px-2">
+                <div className="accordion-item border-0 green-bckgr text-center py-1 px-2">
                     {section[sectionTitle].length === 0 ? /* if there are no subsections, add link to section*/
                         <Link to={sectionTitle} className=" undecorated-link section-link"> 
                             <p className="accordion-header" data-bs-toggle= "collapse" data-bs-target = {sectionId} >
