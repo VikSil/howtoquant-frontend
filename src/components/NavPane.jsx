@@ -4,14 +4,9 @@ import NavSection from './NavSection'
 
 import '../assets/css/NavPane.css'
 
-export default function NavPane(){
+export default function NavPane(props){
     
-    /* THIS WILL BE RETURNED FROM BACKEND CONFIG APP, DEPENDING ON USER PERMISSIONS  */
-    const [categories, setCategories] = useState([{"organisation": ["funds & books","strategies", "broker accounts"]}, 
-    {"instruments": ["equities"]},
-    {"market data":["identifiers", "prices", "fx rates", "interest rates","analytics"]}, 
-    {"accounting": ["trades list", "PnL ladder","trade screen"]},
-    {"sources":[]}])
+    const {categories} = props
 
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)

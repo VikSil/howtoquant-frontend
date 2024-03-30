@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export default function NavSection(props){
     const {section} = props
@@ -11,12 +12,19 @@ export default function NavSection(props){
             
             <div className="accordion mx-2 my-1" id = "section-accordion">
                 <div className="accordion-item green-bckgr text-center py-1 px-2">
-                    <p className="accordion-header" data-bs-toggle= "collapse" data-bs-target = {sectionId} >
-
-                        {sectionTitle.toUpperCase()}
-
-                    </p>
+                    {section[sectionTitle].length === 0 ? /* if there are no subsections, add link to section*/
+                        <Link to={sectionTitle} className=" undecorated-link section-link"> 
+                            <p className="accordion-header" data-bs-toggle= "collapse" data-bs-target = {sectionId} >
+                                {sectionTitle.toUpperCase()}
+                            </p>
+                        </Link>
+                        : /* if there are are subsections, no link to section*/
+                        <p className="accordion-header" data-bs-toggle= "collapse" data-bs-target = {sectionId} >
+                                {sectionTitle.toUpperCase()}
+                        </p>
+                    }
                 </div>
+
                 {section[sectionTitle].length >0 && /* if there are no subsections, don't render collapsable part of the accordion*/
                     <div id = {sectionName} className="accordion-collapse collapse show ">
                         <div className = "accordion-body p-1">
@@ -26,14 +34,15 @@ export default function NavSection(props){
                                     return word[0].toUpperCase()+word.substring(1)
                                 }).join(" ")
 
-                                return <p key = {index}>{subsection}</p>})
+                                return (
+                                    <Link to ={subsection} className="undecorated-link">
+                                        <p key = {index}>{subsection}</p>
+                                    </Link>)})
                             }
                         </div>                    
                     </div>
                 }
             </div>
-            
-            
         </>
     )
 }
