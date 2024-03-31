@@ -1,0 +1,19 @@
+button {
+    border: none;
+    text-align: center;
+    color: lightyellow;
+    border-radius: 20px;
+    padding: 4px;
+}
+
+button:hover {
+    color: moccasin;
+}
+
+button div {
+  border-color: lightyellow;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 20px;
+
+}
