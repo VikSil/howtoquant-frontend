@@ -5,7 +5,7 @@ export default function GreenButton(props){
 
 return (
         
-            <button className = "green-bckgr" type = "button" onClick = {clickFunction}>
+            <button className = "green-bckgr mx-3 mb-3" type = "button" onClick = {clickFunction}>
                 <div className = "px-2 py-1">
                     {text}
                 </div>

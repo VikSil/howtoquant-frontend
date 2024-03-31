@@ -35,8 +35,8 @@ export default function NavSection(props){
                                 }).join(" ")
 
                                 return (
-                                    <Link to ={subsection} className="undecorated-link">
-                                        <p key = {index}>{subsection}</p>
+                                    <Link to ={subsection} className="undecorated-link" key = {index}>
+                                        <p >{subsection}</p>
                                     </Link>)})
                             }
                         </div>                    

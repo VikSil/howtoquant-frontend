@@ -1,8 +1,12 @@
+
 import {useEffect, useState } from 'react'
 
 import { getIdentifierTypes } from '../utils/api';
 
 import '../assets/css/MainArea.css'
+
+import Loading from './Loading';
+import Error from './Error';
 
 
 export default function MainArea(props){  
@@ -30,23 +34,25 @@ export default function MainArea(props){
 
 
     let content = (
-        <main className = "d-flex flex-column flex-fill pt-5 px-3">
+        <>
             <p>This is going to be the Main Area of the website</p>
             <p>Source: {source}</p>
             {identifierTypes.map((item, index) =>{
                 return (<p key = {index}>{item.type_name}</p>)
             })}
-         </main>
+        </>         
     )
 
     if(isLoading) { content = <p>Main page loading</p> }      
   
-    if (error !== null) { content = <p> {error.response.status} </p>   }
+    if (error !== null) {
+        content = <Error errorCode = {error.response.status} />
+    }
 
     return (
-        <>
+        <main className = "d-flex flex-column flex-fill pt-5 px-3">
             {content}
-        </>
+        </main>
     )
 
 }

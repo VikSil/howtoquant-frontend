@@ -27,7 +27,7 @@ border-color: moccasin;
     background-color: moccasin;
     border-bottom-left-radius: 0.2rem;
     border-bottom-right-radius: 0.2rem;
-    color: darkolivegreen;
+    color: rgb(85, 107, 47);
 }
 
 .accordion-body p {
