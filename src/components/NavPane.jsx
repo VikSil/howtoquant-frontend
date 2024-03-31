@@ -21,9 +21,9 @@ export default function NavPane(props){
     )
 
 
-    if(isLoading) { content = <p>Main page loading</p> }      
+    if(isLoading) { content = <Loading /> }      
   
-    if (error !== null) { content = <p> {error.response.status} </p>   }
+    if (error !== null) { content = <Error errorCode = {error.response.status} />  }
 
     return (
         <aside className="d-flex flex-column align-items-stretch green-bckgr p-1" >

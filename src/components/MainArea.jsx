@@ -43,7 +43,7 @@ export default function MainArea(props){
         </>         
     )
 
-    if(isLoading) { content = <p>Main page loading</p> }      
+    if(isLoading) { content = <Loading /> }      
   
     if (error !== null) {
         content = <Error errorCode = {error.response.status} />
