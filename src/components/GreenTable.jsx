@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 
 import { makeTableHeaders } from '../utils/utils'
 
@@ -10,15 +10,11 @@ export default function GreenTable(props){
 
     const columns = makeTableHeaders(headers)
 
-    const COLUMNS = useMemo(() => columns, [])
-    const DATA = useMemo(() => data, [])
 
-    const tableInstance = useTable ({
-        columns : COLUMNS,
-        data:DATA,
-    })
-
-    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = tableInstance
+    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = useTable ({
+        columns : useMemo(() => columns, []),
+        data:useMemo(() => data, []),
+    }, useSortBy)
 
 return (
 
@@ -28,7 +24,12 @@ return (
                 <tr {...headerGroup.getHeaderGroupProps()}>
                     {
                         headerGroup.headers.map((column) =>(
-                            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+                            <th {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}
+                                <span>
+                                    {column.isSorted ? (column.isSortedDesc? '  🡣': '  🡩'):'  ᛨ'}
+                                </span>
+                            
+                            </th>
                         ))
                     }
                     
