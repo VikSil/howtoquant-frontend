@@ -35,6 +35,7 @@ table tr:hover {
 
 span {
   margin-bottom: 10px;
+  margin-top: 5px;
   text-align: end;
 }
 
@@ -45,15 +46,16 @@ span input {
   border: 1px solid rgba(85, 107, 47, 0.15);
   border-radius: 4px;
   color:  darkolivegreen;
+  background-color: rgba(255,255,224,0.2);
 
 }
 
 span input:hover {
-    background-color: rgba(255, 228, 181, 0.55);
+    background-color: lightyellow;
 }
 
 span input:focus-visible {
-    background-color: rgba(255, 228, 181, 0.55);
+    background-color: lightyellow;
     outline:2px solid rgba(85, 107, 47, 0.4);
 }
 

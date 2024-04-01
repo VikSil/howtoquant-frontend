@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
-import { useTable, useSortBy, useGlobalFilter } from 'react-table'
+import { useTable, useSortBy, useGlobalFilter, useFilters } from 'react-table'
+
 
 import { makeTableHeaders } from '../utils/utils'
 
@@ -15,7 +16,7 @@ export default function GreenTable(props){
     const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state, setGlobalFilter} = useTable ({
         columns : useMemo(() => columns, []),
         data:useMemo(() => data, []),
-    }, useGlobalFilter, useSortBy)
+    }, useFilters, useGlobalFilter, useSortBy)
 
     const {globalFilter} = state
 
@@ -31,19 +32,25 @@ return (
 
     <table {...getTableProps()}>
         <thead>
-            {headerGroups.map((headerGroup) =>(
-                <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroups.map((headerGroup, index) =>(
+                <tr {...headerGroup.getHeaderGroupProps()} >
                     {
                         headerGroup.headers.map((column) =>(
-                            <th {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}
-                                <span>
+                            <th {...column.getHeaderProps()}>                                
+                                <div {...column.getSortByToggleProps()}>
+                                    {column.render('Header')}
                                     {column.isSorted ? (column.isSortedDesc? '  🡣': '  🡩'):'  ᛨ'}
+                                </div>
+                                <span>
+                                    {column.canFilter ? 
+                                    <input value = {column.filterValue || ''}
+                                    onChange = {(event) => column.setFilter(event.target.value)}
+                                    />
+                                    : null}
                                 </span>
-                            
                             </th>
                         ))
-                    }
-                    
+                    }                    
                 </tr>
             ))}
 
