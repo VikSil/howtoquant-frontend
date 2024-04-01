@@ -1,5 +1,6 @@
-import { useMemo } from 'react'
-import { useTable, useSortBy, useGlobalFilter, useFilters } from 'react-table'
+import 'regenerator-runtime'
+import { useMemo ,useState} from 'react'
+import { useTable, useSortBy, useGlobalFilter, useFilters, useAsyncDebounce } from 'react-table'
 
 
 import { makeTableHeaders } from '../utils/utils'
@@ -20,13 +21,20 @@ export default function GreenTable(props){
 
     const {globalFilter} = state
 
+    const [globalFilterValue, setGlobalFilterValue] = useState(globalFilter)
+
+    const onGlobalFilterChange = useAsyncDebounce((globalFilterValue) => {
+        setGlobalFilter(globalFilterValue || undefined)
+    }, 1000)
+
 return (
     <>
     <span>
             Search : {' '}
-            <input value = {globalFilter || ''}
+            <input value = {globalFilterValue || ''}
              placeholder = 'Anything...'
-            onChange={event => setGlobalFilter(event.target.value)}
+            onChange={(event) => {setGlobalFilterValue(event.target.value)
+                onGlobalFilterChange(event.target.value)}}
             />
     </span>
 
