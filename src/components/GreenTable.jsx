@@ -1,9 +1,10 @@
 import { useMemo } from 'react'
-import { useTable, useSortBy } from 'react-table'
+import { useTable, useSortBy, useGlobalFilter } from 'react-table'
 
 import { makeTableHeaders } from '../utils/utils'
 
 import '../assets/css/GreenTable.css'
+
 
 export default function GreenTable(props){
     const {headers, data} = props
@@ -11,12 +12,22 @@ export default function GreenTable(props){
     const columns = makeTableHeaders(headers)
 
 
-    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = useTable ({
+    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state, setGlobalFilter} = useTable ({
         columns : useMemo(() => columns, []),
         data:useMemo(() => data, []),
-    }, useSortBy)
+    }, useGlobalFilter, useSortBy)
+
+    const {globalFilter} = state
 
 return (
+    <>
+    <span>
+            Search : {' '}
+            <input value = {globalFilter || ''}
+             placeholder = 'Anything...'
+            onChange={event => setGlobalFilter(event.target.value)}
+            />
+    </span>
 
     <table {...getTableProps()}>
         <thead>
@@ -55,6 +66,7 @@ return (
                 })
             }
         </tbody>
-    </table>       
+    </table>    
+    </>   
 )
 }

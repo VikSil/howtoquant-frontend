@@ -1,31 +1,62 @@
 table {
-    font-size: large;
-    width: 100%;
-    border-collapse: collapse;
-    border-style: hidden;
-    
+  font-size: large;
+  width: 100%;
+  border-collapse: collapse;
+  border-style: hidden;
 }
 
-table td, table th {
+table td,
+table th {
   border: 3px solid darkolivegreen;
   padding: 8px;
   margin: 3px;
 }
 
 table th {
-    background-color: rgba(85,107,47,0.8);
-    color: lightyellow;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    font-weight: 500;
+  background-color: rgba(85, 107, 47, 0.8);
+  color: lightyellow;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: 500;
+}
 
+table td,
+span {
+  color: darkolivegreen;
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(85, 107, 47, 0.15);
+}
+
+table tr:hover {
+  background-color: moccasin;
+}
+
+span {
+  margin-bottom: 10px;
+  text-align: end;
+}
+
+span input {
+  padding-left: 7px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border: 1px solid rgba(85, 107, 47, 0.15);
+  border-radius: 4px;
+  color:  darkolivegreen;
 
 }
 
-table td {
-    color: darkolivegreen
+span input:hover {
+    background-color: rgba(255, 228, 181, 0.55);
 }
 
-table tr:nth-child(even){background-color:  rgba(85,107,47,0.15);}
+span input:focus-visible {
+    background-color: rgba(255, 228, 181, 0.55);
+    outline:2px solid rgba(85, 107, 47, 0.4);
+}
 
-table tr:hover {background-color: moccasin;}
+::placeholder {
+    color:  rgba(85, 107, 47, 0.4);
+}

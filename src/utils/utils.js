@@ -7,7 +7,6 @@ export const makeTableHeaders = (columns)=>{
         const header = {"Header": col, "accessor": columns[i]}
         headers.push(header)
     }
-    console.log(headers)
     return headers
 
 }
