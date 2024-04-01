@@ -1,0 +1,31 @@
+table {
+    font-size: large;
+    width: 100%;
+    border-collapse: collapse;
+    border-style: hidden;
+    
+}
+
+table td, table th {
+  border: 3px solid darkolivegreen;
+  padding: 8px;
+  margin: 3px;
+}
+
+table th {
+    background-color: rgba(85,107,47,0.8);
+    color: lightyellow;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-weight: 500;
+     ;
+
+}
+
+table td {
+    color: darkolivegreen
+}
+
+table tr:nth-child(even){background-color:  rgba(85,107,47,0.15);}
+
+table tr:hover {background-color: moccasin;}

@@ -35,7 +35,7 @@ export default function NewInstrument(){
     )
 
     return (
-        <main className = "d-flex flex-column flex-fill pt-5 px-3">
+        <main className = "d-flex flex-column flex-fill p-5">
             {content}
         </main>
     )
