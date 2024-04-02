@@ -1,23 +1,24 @@
 import {useEffect, useState } from 'react'
 
-import {getAllEquities} from '../utils/api';
-
 import Loading from './Loading';
 import Error from './Error';
 
 import GreenTable from './GreenTable';
 
-export default function Equities(){  
+export default function TablePage(props){  
+
+    const {title, fetchFunction, fetchKey} = props
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null);
 
-    const [equities, setEquities] = useState([{}])
+    const [items, setItems] = useState([{}])
 
     useEffect(()=>{
-        getAllEquities()
+        setIsLoading(true)
+        fetchFunction()
         .then((data) => {
-            setEquities(data.equities);
+            setItems(data[fetchKey]);
         })
         .catch((error)=>{
             setError(error);
@@ -26,14 +27,14 @@ export default function Equities(){
             setIsLoading(false);
         })
         
-    }, [])
+    }, [title])
 
 
 
     let content = (
         <>
-            <h2>All Equities</h2>
-            <GreenTable headers = {Object.keys(equities[0])} data = {equities}/>
+            <h2>{title}</h2>
+            <GreenTable headers = {Object.keys(items[0])} data = {items}/>
         </>         
     )
 

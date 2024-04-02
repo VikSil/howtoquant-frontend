@@ -27,3 +27,16 @@ export const getIdentifierTypes = () => {
         throw error;
       });
   };
+
+  export const getAllIdentifiers = () => {
+    let URL = APIroot+"staticdata/api/idenitifiers/all";
+
+    return axios
+      .get(URL)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };

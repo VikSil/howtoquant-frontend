@@ -67,116 +67,112 @@ export default function GreenTable(props){
 
 return (
     <>
-    <span>
-            Search : {' '}
-            <input value = {globalFilterValue || ''}
-             placeholder = 'Anything...'
-            onChange={(event) => {setGlobalFilterValue(event.target.value)
-                onGlobalFilterChange(event.target.value)}}
-            />
-    </span>
+        {pageCount>0 ? <>
+        <span>
+                Search : {' '}
+                <input value = {globalFilterValue || ''}
+                placeholder = 'Anything...'
+                onChange={(event) => {setGlobalFilterValue(event.target.value)
+                    onGlobalFilterChange(event.target.value)}}
+                />
+        </span>
 
-    <table {...getTableProps()}>
-        <thead>
-            {headerGroups.map((headerGroup, index) =>(
-                <tr {...headerGroup.getHeaderGroupProps()} >
-                    {
-                        headerGroup.headers.map((column) =>(
-                            <th {...column.getHeaderProps()}>                                
-                                <div {...column.getSortByToggleProps()}>
-                                    {column.render('Header')}
-                                    {column.isSorted ? (column.isSortedDesc? '  🡣': '  🡩'):'  ᛨ'}
-                                </div>
-                                <span>
-                                    {column.canFilter ? 
-                                    <input className = "col-search-field" value = {column.filterValue || ''}
-                                    onChange = {(event) => column.setFilter(event.target.value)}
-                                    />
-                                    : null}
-                                </span>
-                            </th>
-                        ))
-                    }                    
-                </tr>
-            ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-            {
-                page.map((row) =>{
-                    prepareRow(row)
-                    return (
-                        <tr {...row.getRowProps()}>
-                            {
-                                row.cells.map((cell) =>{
-                                    return <td {...cell.getCellProps()}>
-                                        {cell.render('Cell')}
-                                    </td>
-                                })                                
-                            }                           
-                        </tr>
-                    )
-                })
-            }
-        </tbody>
-    </table> 
-
-    <footer className='mt-2 d-flex justify-content-between'>   
-
-            <span>
-                Page {' '}
-                <input id = "goto-input" type = 'number' value={gotoInputValue} 
-                onChange = {(event) => {                    
-                    if (event.target.value) 
-                        {setGotoInputValue(event.target.value)
-                         setGotoPageNumber(Number(event.target.value)-1)}
-                    else {setGotoPageNumber(1)} 
-                    }}/>
-                <GreenButton text = {"Go"} clickFunction = {() =>gotoPage(gotoPageNumber)}/>
-            </span>
-
-            {(canPreviousPage ||canNextPage) ? 
-                <div>                
-                    <GreenButton text = {"<<"} isDisabled = {!canPreviousPage} clickFunction = {() =>gotoPage(0)}/>
-                    <GreenButton text = {"<"} isDisabled = {!canPreviousPage} clickFunction = {() =>previousPage()}/>
-                    <span>
-                        <strong className='ms-2'>
-                        page {' '}                    
-                            {pageIndex + 1} of {pageOptions.length}
-                        </strong>
-                        {' '}
-                    </span>
-
-                    <GreenButton text = {">"} isDisabled = {!canNextPage} clickFunction = {() =>nextPage()}/>
-                    <GreenButton text = {">>"} isDisabled = {!canNextPage} clickFunction = {() =>gotoPage(pageCount-1)}/>
-                </div>
-            :null }
-            
-            <span className = "d-flex flex-column" id = "rows-per-page-span">
-                <div>
-                    Rows per page {' '} 
-                    <GreenButton text = {pageSize + " 🡣"}  clickFunction = {() => toggleDropdown()} id= {"dropdwnbtn"}/>
-                </div>
-                <div>
-                    <div id="pagesize-dropdown" className="dropdown-content">
+        <table {...getTableProps()}>
+            <thead>
+                {headerGroups.map((headerGroup, index) =>(
+                    <tr {...headerGroup.getHeaderGroupProps()} >
                         {
-                            [1,2,3].map((pageSize) =>(
-                                <a key = {pageSize} onClick = {(event) => {setPageSize(Number(event.target.textContent)); toggleDropdown()}}>
-                                    {pageSize}
-                                </a>
+                            headerGroup.headers.map((column) =>(
+                                <th {...column.getHeaderProps()}>                                
+                                    <div {...column.getSortByToggleProps()}>
+                                        {column.render('Header')}
+                                        {column.isSorted ? (column.isSortedDesc? '  🡣': '  🡩'):'  ᛨ'}
+                                    </div>
+                                    <span>
+                                        {column.canFilter ? 
+                                        <input className = "col-search-field" value = {column.filterValue || ''}
+                                        onChange = {(event) => column.setFilter(event.target.value)}
+                                        />
+                                        : null}
+                                    </span>
+                                </th>
                             ))
-                        }
-                    </div>
-                </div>
-            </span>
-    </footer>
+                        }                    
+                    </tr>
+                ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+                {
+                    page.map((row) =>{
+                        prepareRow(row)
+                        return (
+                            <tr {...row.getRowProps()}>
+                                {
+                                    row.cells.map((cell) =>{
+                                        return <td {...cell.getCellProps()}>
+                                            {cell.render('Cell')}
+                                        </td>
+                                    })                                
+                                }                           
+                            </tr>
+                        )
+                    })
+                }
+            </tbody>
+        </table> 
 
-    {/* {(canPreviousPage ||canNextPage) ? 
-        <div>   
-            <button onClick = {() =>previousPage()} disabled = {!canPreviousPage}>Previous</button>
-            
-            <button onClick = {() =>nextPage()} disabled = {!canNextPage}>Next</button>
-        </div>
-    :null } */}
-    </>   
+        <footer className='mt-2 d-flex justify-content-between'>   
+
+                <span>
+                    Page {' '}
+                    <input id = "goto-input" type = 'number' value={gotoInputValue} 
+                    onChange = {(event) => {                    
+                        if (event.target.value) 
+                            {setGotoInputValue(event.target.value)
+                            setGotoPageNumber(Number(event.target.value)-1)}
+                        else {setGotoPageNumber(1)} 
+                        }}/>
+                    <GreenButton text = {"Go"} clickFunction = {() =>gotoPage(gotoPageNumber)}/>
+                </span>
+
+                {(canPreviousPage ||canNextPage) ? 
+                    <div>                
+                        <GreenButton text = {"<<"} isDisabled = {!canPreviousPage} clickFunction = {() =>gotoPage(0)}/>
+                        <GreenButton text = {"<"} isDisabled = {!canPreviousPage} clickFunction = {() =>previousPage()}/>
+                        <span>
+                            <strong className='ms-2'>
+                            page {' '}                    
+                                {pageIndex + 1} of {pageOptions.length}
+                            </strong>
+                            {' '}
+                        </span>
+
+                        <GreenButton text = {">"} isDisabled = {!canNextPage} clickFunction = {() =>nextPage()}/>
+                        <GreenButton text = {">>"} isDisabled = {!canNextPage} clickFunction = {() =>gotoPage(pageCount-1)}/>
+                    </div>
+                :null }
+                
+                <span className = "d-flex flex-column" id = "rows-per-page-span">
+                    <div>
+                        Rows per page {' '} 
+                        <GreenButton text = {pageSize + " 🡣"}  clickFunction = {() => toggleDropdown()} id= {"dropdwnbtn"}/>
+                    </div>
+                    <div>
+                        <div id="pagesize-dropdown" className="dropdown-content">
+                            {
+                                [1,2,3].map((pageSize) =>(
+                                    <a key = {pageSize} onClick = {(event) => {setPageSize(Number(event.target.textContent)); toggleDropdown()}}>
+                                        {pageSize}
+                                    </a>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </span>
+        </footer>
+        </>
+        :
+        <></>}
+    </>  
 )
 }
