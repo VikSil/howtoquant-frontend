@@ -1,5 +1,5 @@
 table {
-  font-size: large;
+  font-size: min(1vw, 15px);
   width: 100%;
   border-collapse: collapse;
   border-style: hidden;

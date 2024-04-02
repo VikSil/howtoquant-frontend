@@ -82,8 +82,8 @@ function App() {
     </>
   )
 
-  // 576 is Bootstrap's small brekapoint
-  if (screenWidth<=576){ 
+  // 576 is Bootstrap's large brekapoint
+  if (screenWidth<=992){ 
     content = 
     <>
       <p>This website is not optimized for mobile viewing. Please use a device with a larger screen.</p>
