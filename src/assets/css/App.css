@@ -31,3 +31,34 @@ h2 {
   font-weight: 600;
   margin-bottom: 0px;
 }
+
+span {
+  margin-bottom: 10px;
+  margin-top: 5px;
+  text-align: end;
+}
+
+span input, span select {
+  padding-left: 7px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border: 1px solid rgba(85, 107, 47, 0.15);
+  border-radius: 4px;
+  color:  darkolivegreen;
+  background-color: rgba(255,255,224,0.2);
+
+}
+
+span input:hover, span select:hover {
+    background-color: lightyellow;
+}
+
+span input:focus-visible, span select:focus-visible {
+    background-color: lightyellow;
+    outline:2px solid rgba(85, 107, 47, 0.4);
+}
+
+::placeholder {
+    color:  rgba(85, 107, 47, 0.4);
+}
+

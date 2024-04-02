@@ -6,7 +6,7 @@ button {
     padding: 3px;
 }
 
-button:hover {
+button:hover:not([disabled]) {
     color: moccasin;
 }
 
@@ -17,3 +17,9 @@ button div {
   border-radius: 20px;
 
 }
+
+button:disabled,
+button[disabled]{
+  background-color:rgba(85, 107, 47, 0.5);
+}
+

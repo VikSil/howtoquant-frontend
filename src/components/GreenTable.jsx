@@ -1,9 +1,10 @@
 import 'regenerator-runtime'
 import { useMemo ,useState} from 'react'
-import { useTable, useSortBy, useGlobalFilter, useFilters, useAsyncDebounce } from 'react-table'
-
+import { useTable, useSortBy, useGlobalFilter, useFilters, useAsyncDebounce, usePagination } from 'react-table'
 
 import { makeTableHeaders } from '../utils/utils'
+
+import GreenButton from './GreenButton';
 
 import '../assets/css/GreenTable.css'
 
@@ -14,18 +15,55 @@ export default function GreenTable(props){
     const columns = makeTableHeaders(headers)
 
 
-    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state, setGlobalFilter} = useTable ({
+    const {getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        prepareRow,
+        state,
+        setGlobalFilter,
+        page,
+        nextPage,
+        previousPage,
+        canNextPage,
+        canPreviousPage,
+        pageOptions,
+        gotoPage,
+        pageCount,
+        setPageSize,
+
+    }= useTable ({
         columns : useMemo(() => columns, []),
         data:useMemo(() => data, []),
-    }, useFilters, useGlobalFilter, useSortBy)
+    }, useFilters, useGlobalFilter,useSortBy,usePagination)
 
-    const {globalFilter} = state
+    const {globalFilter, pageIndex, pageSize} = state
 
     const [globalFilterValue, setGlobalFilterValue] = useState(globalFilter)
 
     const onGlobalFilterChange = useAsyncDebounce((globalFilterValue) => {
         setGlobalFilter(globalFilterValue || undefined)
     }, 1000)
+
+    const [gotoPageNumber, setGotoPageNumber] = useState(pageIndex)
+    const [gotoInputValue, setGotoInputValue] = useState(gotoPageNumber+1)
+
+    const toggleDropdown = () =>{
+        document.getElementById("pagesize-dropdown").classList.toggle("show")
+    }
+
+    // Close the rows-per-page dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (event.target.id !== 'dropdwnbtn') {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
 
 return (
     <>
@@ -61,11 +99,10 @@ return (
                     }                    
                 </tr>
             ))}
-
         </thead>
         <tbody {...getTableBodyProps()}>
             {
-                rows.map((row) =>{
+                page.map((row) =>{
                     prepareRow(row)
                     return (
                         <tr {...row.getRowProps()}>
@@ -81,7 +118,65 @@ return (
                 })
             }
         </tbody>
-    </table>    
+    </table> 
+
+    <footer className='mt-2 d-flex justify-content-between'>   
+
+            <span>
+                Page {' '}
+                <input id = "goto-input" type = 'number' value={gotoInputValue} 
+                onChange = {(event) => {                    
+                    if (event.target.value) 
+                        {setGotoInputValue(event.target.value)
+                         setGotoPageNumber(Number(event.target.value)-1)}
+                    else {setGotoPageNumber(1)} 
+                    }}/>
+                <GreenButton text = {"Go"} clickFunction = {() =>gotoPage(gotoPageNumber)}/>
+            </span>
+
+            {(canPreviousPage ||canNextPage) ? 
+                <div>                
+                    <GreenButton text = {"<<"} isDisabled = {!canPreviousPage} clickFunction = {() =>gotoPage(0)}/>
+                    <GreenButton text = {"<"} isDisabled = {!canPreviousPage} clickFunction = {() =>previousPage()}/>
+                    <span>
+                        <strong className='ms-2'>
+                        page {' '}                    
+                            {pageIndex + 1} of {pageOptions.length}
+                        </strong>
+                        {' '}
+                    </span>
+
+                    <GreenButton text = {">"} isDisabled = {!canNextPage} clickFunction = {() =>nextPage()}/>
+                    <GreenButton text = {">>"} isDisabled = {!canNextPage} clickFunction = {() =>gotoPage(pageCount-1)}/>
+                </div>
+            :null }
+            
+            <span className = "d-flex flex-column" id = "rows-per-page-span">
+                <div>
+                    Rows per page {' '} 
+                    <GreenButton text = {pageSize + " 🡣"}  clickFunction = {() => toggleDropdown()} id= {"dropdwnbtn"}/>
+                </div>
+                <div>
+                    <div id="pagesize-dropdown" className="dropdown-content">
+                        {
+                            [1,2,3].map((pageSize) =>(
+                                <a key = {pageSize} onClick = {(event) => {setPageSize(Number(event.target.textContent)); toggleDropdown()}}>
+                                    {pageSize}
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+            </span>
+    </footer>
+
+    {/* {(canPreviousPage ||canNextPage) ? 
+        <div>   
+            <button onClick = {() =>previousPage()} disabled = {!canPreviousPage}>Previous</button>
+            
+            <button onClick = {() =>nextPage()} disabled = {!canNextPage}>Next</button>
+        </div>
+    :null } */}
     </>   
 )
 }

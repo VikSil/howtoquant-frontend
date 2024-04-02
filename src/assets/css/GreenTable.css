@@ -33,32 +33,42 @@ table tr:hover {
   background-color: moccasin;
 }
 
-span {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  text-align: end;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
-span input {
-  padding-left: 7px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  border: 1px solid rgba(85, 107, 47, 0.15);
-  border-radius: 4px;
-  color:  darkolivegreen;
-  background-color: rgba(255,255,224,0.2);
-
+#goto-input {
+  max-width: 50px;
+  margin-right: 7px;
 }
 
-span input:hover {
-    background-color: lightyellow;
+#rows-per-page-span {
+  align-items: right;
 }
 
-span input:focus-visible {
-    background-color: lightyellow;
-    outline:2px solid rgba(85, 107, 47, 0.4);
+.dropdown-content {
+  display: none;
+  background-color: lightyellow;
+  width: 50px;
+  box-shadow: 0px 8px 16px 0px rgba(85, 107, 47, 0.8);
+  text-align: center;
+  float: right;
 }
 
-::placeholder {
-    color:  rgba(85, 107, 47, 0.4);
+.dropdown-content a {
+  display: block;
+  padding: 2px;
+  text-decoration: none;
+  color: darkolivegreen;
+  cursor: default;
+}
+
+.dropdown-content a:hover {
+  background-color: moccasin
+}
+
+.show {
+  display: block;
 }
