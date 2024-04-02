@@ -1,5 +1,6 @@
 table {
   font-size: min(1vw, 15px);
+  table-layout:fixed;
   width: 100%;
   border-collapse: collapse;
   border-style: hidden;
@@ -46,6 +47,10 @@ input::-webkit-inner-spin-button {
 
 #rows-per-page-span {
   align-items: right;
+}
+
+.col-search-field {
+  width:90%;
 }
 
 .dropdown-content {

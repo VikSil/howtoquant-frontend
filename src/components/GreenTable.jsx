@@ -89,7 +89,7 @@ return (
                                 </div>
                                 <span>
                                     {column.canFilter ? 
-                                    <input value = {column.filterValue || ''}
+                                    <input className = "col-search-field" value = {column.filterValue || ''}
                                     onChange = {(event) => column.setFilter(event.target.value)}
                                     />
                                     : null}
