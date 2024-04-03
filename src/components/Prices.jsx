@@ -1,6 +1,7 @@
 import {useState } from 'react'
 
 import GreenButton from './GreenButton';
+import PriceDownload from './PriceDownload';
 
 export default function NewInstrument(){  
 
@@ -9,8 +10,8 @@ export default function NewInstrument(){
 
     const [subpage, setSubPage] = useState(null);
 
-    const setManual = ()=> {
-        setSubPage("manual")
+    const setView = ()=> {
+        setSubPage("view")
     }
 
     const setDownload = () => {
@@ -19,17 +20,20 @@ export default function NewInstrument(){
 
     let content = (
         <>
-            <h2>Add new instrument</h2>
+            <h2>Market Prices</h2>
             <div className='d-flex justify-content-center spaced-div'>
-                <GreenButton text = {"Manually"} clickFunction= {setManual}/>
+                <GreenButton text = {"View Prices"} clickFunction= {setView}/>
                 <GreenButton text = {"Download"} clickFunction= {setDownload}/>
             </div>
-            {subpage === "manual"?
-                <p>This will be manual page</p>
-            : subpage=== "download" ?
-                <p>This will be download page</p>      
-              : null  
-        }
+            <section className = "d-flex justify-content-center top-split mt-4 py-5">
+                {subpage === "view"?
+                    <p>This will be manual page</p>
+                : subpage=== "download" ?
+                    <PriceDownload/>      
+                : null  
+                }
+            </section>
+            
             
         </>         
     )

@@ -13,6 +13,7 @@
     "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-multi-date-picker": "^4.4.1",
     "react-router-dom": "^6.22.3",
     "react-table": "^7.8.0",
     "regenerator-runtime": "^0.14.1",

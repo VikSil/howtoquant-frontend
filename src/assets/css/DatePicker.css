@@ -1,0 +1,60 @@
+.custom-datepicker {
+  padding-left: 7px!important;
+  padding-top: 3px!important;
+  padding-bottom: 3px!important;
+  padding-right: 0px!important;
+  border: 1px solid rgba(85, 107, 47, 0.15)!important;
+  border-radius: 4px !important;
+  color:  darkolivegreen;
+  background-color: rgba(255,255,224,0.2);  
+  height: auto!important;
+  margin: auto!important;
+}
+
+.custom-datepicker:focus {
+    background-color: lightyellow!important;
+    outline:2px solid rgba(85, 107, 47, 0.4);
+}
+
+.custom-datepicker.rmdp-wrapper,
+.rmdp-container .custom-datepicker.ep-arrow::after,
+.rmdp-year-picker,
+.rmdp-month-picker {
+  background-color: lightyellow!important
+}
+
+.rmdp-week-day, .rmdp-header-values{
+  color: darkolivegreen!important;
+  font-weight: 700!important;
+}
+
+.rmdp-arrow {
+  border-color:darkolivegreen!important;
+}
+
+.rmdp-day span{
+  margin-bottom: auto;
+  margin-top:auto;
+  text-align: center;
+}
+
+.rmdp-day.rmdp-selected span:not(.highlight){
+  background-color: darkolivegreen!important;
+  box-shadow: 0 0 2px rgba(85, 107, 47, 0.4)!important;
+  color: lightyellow!important;
+}
+
+.rmdp-day.rmdp-today span {
+  background-color: rgba(85, 107, 47, 0.4)!important;
+  color: darkolivegreen!important;
+}
+
+.rmdp-day:not(.rmdp-disabled,.rmdp-day-hidden) span:hover, .rmdp-arrow-container:hover{
+  background-color: moccasin !important;
+  color:darkolivegreen !important;
+  box-shadow: none!important;
+}
+
+.rmdp-shadow{
+  box-shadow: 0 0 2px rgba(85, 107, 47, 0.4)!important;
+}

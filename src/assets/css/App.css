@@ -8,17 +8,13 @@ body {
    
 }
 
-body p {
+body p, label, legend {
   font-size: large;
   color: darkolivegreen;
 }
 
 body, .max-height{
     min-height: 100%;
-}
-
-.green-bckgr {
-  background-color: darkolivegreen;
 }
 
 main{
@@ -38,26 +34,55 @@ span {
   text-align: end;
 }
 
-span input, span select {
+input, select {
   padding-left: 7px;
   padding-top: 3px;
   padding-bottom: 3px;
+  padding-right: 0px;
   border: 1px solid rgba(85, 107, 47, 0.15);
   border-radius: 4px;
   color:  darkolivegreen;
-  background-color: rgba(255,255,224,0.2);
+  background-color: rgba(255,255,224,0.2);  
+  height: auto;
+  margin: auto;
 }
 
-span input:hover, span select:hover {
+input:hover, select:hover {
     background-color: lightyellow;
 }
 
-span input:focus-visible, span select:focus-visible {
+input:focus-visible, select:focus-visible {
     background-color: lightyellow;
     outline:2px solid rgba(85, 107, 47, 0.4);
 }
 
+
+.spaced-div > * {
+   margin-left: 1%;
+   margin-right: 1%;
+}
+
+.green-bckgr {
+  background-color: darkolivegreen;
+}
+
+.top-split {
+  border-top: 1px solid darkolivegreen;
+}
+
+.left-aligned-input{
+  float:left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.left-aligned-input label, .left-aligned-input input {
+  display: block;
+  text-align: left;
+  margin-bottom: 3px;
+}
+
+
 ::placeholder {
     color:  rgba(85, 107, 47, 0.4);
 }
-

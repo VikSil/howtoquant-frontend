@@ -1,4 +1,5 @@
 import './assets/css/App.css'
+import './assets/css/DatePicker.css'
 
 import {Routes, Route} from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -7,6 +8,7 @@ import { useEffect, useState } from 'react'
 import TitleBar from './components/TitleBar'
 import NavPane from './components/NavPane'
 import NewInstrument from './components/NewInstrument'
+import Prices from './components/Prices'
 
 
 
@@ -72,7 +74,7 @@ function App() {
         {routes.includes("equities")&& <Route path = "/equities" element = {<TablePage title = {"All Equities"} fetchFunction = {getAllEquities} fetchKey = {"equities"}/>} />}
         {routes.includes("new instrument")&& <Route path = "/new instrument" element = {<NewInstrument/>} />}
         {routes.includes("identifiers")&& <Route path = "/identifiers" element = {<TablePage title = {"All Identifiers"} fetchFunction = {getAllIdentifiers} fetchKey = {"identifiers"}/>} />}
-        {routes.includes("prices")&& <Route path = "/prices" element = {<MainArea source= {"prices"}/>} />}
+        {routes.includes("prices")&& <Route path = "/prices" element = {<Prices/>} />}
         {routes.includes("fx rates")&& <Route path = "/fx rates" element = {<MainArea source= {"fx rates"}/>} />}
         {routes.includes("interest rates")&& <Route path = "/interest rates" element = {<MainArea source= {"interest rates"}/>} />}
         {routes.includes("analytics")&& <Route path = "/analytics" element = {<MainArea source= {"analytics"}/>} />}
