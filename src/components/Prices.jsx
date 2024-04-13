@@ -1,4 +1,4 @@
-import {useState } from 'react'
+import {useEffect, useState } from 'react'
 
 import GreenButton from './GreenButton';
 import PriceDownload from './PriceDownload';
@@ -9,6 +9,11 @@ export default function NewInstrument(){
     const [error, setError] = useState(null);
 
     const [subpage, setSubPage] = useState(null);
+
+
+    useEffect(() =>{
+    
+      }, [subpage])
 
     const setView = ()=> {
         setSubPage("view")
@@ -29,12 +34,10 @@ export default function NewInstrument(){
                 {subpage === "view"?
                     <p>This will be manual page</p>
                 : subpage=== "download" ?
-                    <PriceDownload/>      
+                    <PriceDownload callback = {setSubPage}/>      
                 : null  
                 }
-            </section>
-            
-            
+            </section> 
         </>         
     )
 

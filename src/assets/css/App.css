@@ -82,6 +82,12 @@ input:focus-visible, select:focus-visible {
   margin-bottom: 3px;
 }
 
+.error-class {
+  color:red;
+  font-size: small;
+  font-weight: 600;
+  padding-top: 5px;
+}
 
 ::placeholder {
     color:  rgba(85, 107, 47, 0.4);
