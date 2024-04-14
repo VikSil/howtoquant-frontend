@@ -56,6 +56,15 @@ input:focus-visible, select:focus-visible {
     outline:2px solid rgba(85, 107, 47, 0.4);
 }
 
+input:-webkit-autofill{
+    -webkit-text-fill-color: darkolivegreen !important;
+    -webkit-box-shadow: 0 0 0 30px rgb(255,255,236)inset !important;
+}
+
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus{
+    -webkit-box-shadow: 0 0 0 30px lightyellow inset !important;
+}
 
 .spaced-div > * {
    margin-left: 1%;
