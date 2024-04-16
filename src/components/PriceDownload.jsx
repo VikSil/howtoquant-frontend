@@ -28,24 +28,30 @@ export default function PriceDownload(props){
     const handleSubmit = (event) => {
         event.preventDefault()
         if (ticker && dateFrom && dateTo){
-            const newDownload = {
-                "tickers":[ticker],
-                "date_from": dateFrom.toISOString().split('T')[0],
-                "date_to": dateTo.toISOString().split('T')[0]
+            if (dateFrom<dateTo){
+
+                const newDownload = {
+                    "tickers":[ticker],
+                    "date_from": dateFrom.toISOString().split('T')[0],
+                    "date_to": dateTo.toISOString().split('T')[0]
+                }
+                setError(null)
+                setIsLoading(true)
+                setDownloadId(false)
+                putPriceDownload(newDownload)
+                .then((data) =>{
+                    setIsLoading(false)
+                    setDownloadId(data.download_id)
+                })
+                .catch((error) =>{
+                    console.log(error)
+                    setError(error.message)
+                    setIsLoading(false)
+                })
             }
-            setError(null)
-            setIsLoading(true)
-            setDownloadId(false)
-            putPriceDownload(newDownload)
-            .then((data) =>{
-                setIsLoading(false)
-                setDownloadId(data.download_id)
-            })
-            .catch((error) =>{
-                console.log(error)
-                setError(error.message)
-                setIsLoading(false)
-            })
+            else{
+                setError("From Date must be less than To Date")
+            }
         }
         else {
             setError("Please fill out all fields")
