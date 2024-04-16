@@ -5,15 +5,15 @@ import DatePicker from "react-multi-date-picker"
 
 import GreenButton from './GreenButton';
 
-import { getPriceDownload } from '../utils/api';
+import {putPriceDownload } from '../utils/api';
 import Loading from './Loading';
 
 export default function PriceDownload(props){
     
-    const {callback} = props
+    const {callbackFunc} = props
 
     const [isLoading, setIsLoading] = useState(false)
-    const [downloaded , setDownloaded] = useState(false)
+    const [downloadId, setDownloadId] = useState(null)
     const [error, setError] = useState(null)
 
     const [ticker, setTicker] = useState("")
@@ -22,7 +22,7 @@ export default function PriceDownload(props){
 
     const viewPrices = (event) =>{
         event.preventDefault()
-        callback("view")
+        callbackFunc(downloadId)
     }
 
     const handleSubmit = (event) => {
@@ -35,12 +35,11 @@ export default function PriceDownload(props){
             }
             setError(null)
             setIsLoading(true)
-            setDownloaded(false)
-            getPriceDownload(newDownload)
+            setDownloadId(false)
+            putPriceDownload(newDownload)
             .then((data) =>{
-                console.log(data)
                 setIsLoading(false)
-                setDownloaded(true)
+                setDownloadId(data.download_id)
             })
             .catch((error) =>{
                 console.log(error)
@@ -52,7 +51,6 @@ export default function PriceDownload(props){
             setError("Please fill out all fields")
         }
       }
-
 
     return (
         <>        
@@ -88,7 +86,7 @@ export default function PriceDownload(props){
                 <fieldset className='text-start'>
                    {error && <p className='error-class'>{error}</p>}
                    {isLoading && <Loading />}
-                   {downloaded && 
+                   {downloadId && 
                    <div className= "top-split mt-3 pt-2 pe-2 d-flex justify-content-between">
                       <p className='mb-0 align-content-center'>Prices downloaded</p>
                       <GreenButton text = "View" clickFunction = {viewPrices}/>

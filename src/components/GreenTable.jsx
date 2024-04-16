@@ -1,3 +1,6 @@
+// Table solution from here:
+// https://www.youtube.com/playlist?list=PLC3y8-rFHvwgWTSrDiwmUsl4ZvipOw9Cz
+
 import 'regenerator-runtime'
 import { useMemo ,useState} from 'react'
 import { useTable, useSortBy, useGlobalFilter, useFilters, useAsyncDebounce, usePagination } from 'react-table'

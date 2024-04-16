@@ -42,11 +42,22 @@ export const getIdentifierTypes = () => {
   };
 
 
-  export const getPriceDownload = (data) => {
+  export const putPriceDownload = (data) => {
     let URL = APIroot+"marketdata/api/prices/new";
-    console.log(data)
     return axios
       .put(URL, data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  export const getPriceDownload = (id) => {
+    let URL = APIroot+"marketdata/api/prices/download/"+id;
+    return axios
+      .get(URL)
       .then((response) => {
         return response.data;
       })

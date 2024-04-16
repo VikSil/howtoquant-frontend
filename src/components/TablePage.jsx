@@ -7,7 +7,7 @@ import GreenTable from './GreenTable';
 
 export default function TablePage(props){  
 
-    const {title, fetchFunction, fetchKey} = props
+    const {title, fetchFunction, fetchParams, fetchKey, onceDone} = props
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null);
@@ -15,9 +15,11 @@ export default function TablePage(props){
     const [items, setItems] = useState([{}])
 
     useEffect(()=>{
+        setError(null)
         setIsLoading(true)
-        fetchFunction()
+        fetchFunction(fetchParams)
         .then((data) => {
+            console.log(data)
             setItems(data[fetchKey]);
         })
         .catch((error)=>{
@@ -25,9 +27,10 @@ export default function TablePage(props){
         })
         .finally(()=>{
             setIsLoading(false);
+            onceDone(false)
         })
         
-    }, [title])
+    }, [title, fetchParams])
 
 
 
@@ -46,7 +49,7 @@ export default function TablePage(props){
 
 
     return (
-        <main className = "d-flex flex-column flex-fill p-5">
+        <main className = "d-flex flex-column flex-fill">
             {content}
         </main>
     )
