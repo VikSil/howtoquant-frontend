@@ -15,6 +15,19 @@ export const getIdentifierTypes = () => {
       });
   };
 
+  export const getIdentifierCodes = () => {
+    let URL = APIroot+"staticdata/api/idenitifiers/codes";
+
+    return axios
+      .get(URL)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
   export const getAllEquities = () => {
     let URL = APIroot+"staticdata/api/equities/all";
 
@@ -56,6 +69,18 @@ export const getIdentifierTypes = () => {
 
   export const getPriceDownload = (id) => {
     let URL = APIroot+"marketdata/api/prices/download/"+id;
+    return axios
+      .get(URL)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  export const getPrices = () => {
+    let URL = APIroot+"marketdata/api/prices";
     return axios
       .get(URL)
       .then((response) => {

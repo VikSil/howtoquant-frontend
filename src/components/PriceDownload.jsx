@@ -1,11 +1,11 @@
 
-import {useState } from 'react'
+import {useState,useEffect } from 'react'
 
 import DatePicker from "react-multi-date-picker"
 
 import GreenButton from './GreenButton';
 
-import {putPriceDownload } from '../utils/api';
+import {putPriceDownload, getIdentifierCodes } from '../utils/api';
 import Loading from './Loading';
 
 export default function PriceDownload(props){
@@ -16,9 +16,17 @@ export default function PriceDownload(props){
     const [downloadId, setDownloadId] = useState(null)
     const [error, setError] = useState(null)
 
+    const [allTickers, setAllTickers] = useState([])
     const [ticker, setTicker] = useState("")
     const [dateFrom, setDateFrom] = useState(new Date(new Date().setMonth(new Date().getMonth()-1)))
     const [dateTo, setDateTo] = useState(new Date())
+
+    useEffect(() =>{
+        getIdentifierCodes()
+        .then((data)=>{
+            setAllTickers(data.codes)
+        })
+    }, [])
 
     const viewPrices = (event) =>{
         event.preventDefault()
@@ -27,34 +35,41 @@ export default function PriceDownload(props){
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        console.log(allTickers)
         if (ticker && dateFrom && dateTo){
-            if (dateFrom<dateTo){
+            if (allTickers.includes(ticker.toUpperCase())){
+                if (dateFrom<dateTo){
 
-                const newDownload = {
-                    "tickers":[ticker],
-                    "date_from": dateFrom.toISOString().split('T')[0],
-                    "date_to": dateTo.toISOString().split('T')[0]
+                    const newDownload = {
+                        "tickers":[ticker.toUpperCase()],
+                        "date_from": dateFrom.toISOString().split('T')[0],
+                        "date_to": dateTo.toISOString().split('T')[0]
+                    }
+                    setError(null)
+                    setIsLoading(true)
+                    setDownloadId(false)
+                    putPriceDownload(newDownload)
+                    .then((data) =>{
+                        setIsLoading(false)
+                        setDownloadId(data.download_id)
+                    })
+                    .catch((error) =>{
+                        console.log(error)
+                        setError(error.message)
+                        setIsLoading(false)
+                    })
                 }
-                setError(null)
-                setIsLoading(true)
-                setDownloadId(false)
-                putPriceDownload(newDownload)
-                .then((data) =>{
-                    setIsLoading(false)
-                    setDownloadId(data.download_id)
-                })
-                .catch((error) =>{
-                    console.log(error)
-                    setError(error.message)
-                    setIsLoading(false)
-                })
+                else{
+                    setError("From Date must be less than To Date")
+                }
             }
-            else{
-                setError("From Date must be less than To Date")
+            else {
+                setError("Ticker not found in database")
             }
         }
         else {
             setError("Please fill out all fields")
+            
         }
       }
 
@@ -63,7 +78,7 @@ export default function PriceDownload(props){
             <form onSubmit = {handleSubmit}>
                 <fieldset>
                     <div className='left-aligned-input'>
-                        <label htmlFor='identifier-input'> Indentifiers:</label>
+                        <label htmlFor='identifier-input'> Indentifier:</label>
                         <input id = 'identifier-input' type = "text" value = {ticker} onChange = {(event) => {setTicker(event.target.value)}}/>
                     </div>
                     <div className='left-aligned-input'>
