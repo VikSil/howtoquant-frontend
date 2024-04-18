@@ -71,9 +71,17 @@ function App() {
         {routes.includes("funds & books")&& <Route path = "/funds & books" element = {<MainArea source= {"funds & books"}/>} />}
         {routes.includes("strategies")&& <Route path = "/strategies" element = {<MainArea source= {"strategies"}/>} />}
         {routes.includes("broker accounts")&& <Route path = "/broker accounts" element = {<MainArea source= {"broker accounts"}/>} />}
-        {routes.includes("equities")&& <Route path = "/equities" element = {<TablePage title = {"All Equities"} fetchFunction = {getAllEquities} fetchKey = {"equities"}/>} />}
+        {routes.includes("equities")&& <Route path = "/equities" element = {
+        <section className = 'd-flex flex-column flex-fill p-5'>
+          <TablePage title = {"All Equities"} fetchFunction = {getAllEquities} fetchKey = {"equities"}/>
+        </section>
+        } />}
         {routes.includes("new instrument")&& <Route path = "/new instrument" element = {<NewInstrument/>} />}
-        {routes.includes("identifiers")&& <Route path = "/identifiers" element = {<TablePage title = {"All Identifiers"} fetchFunction = {getAllIdentifiers} fetchKey = {"identifiers"}/>} />}
+        {routes.includes("identifiers")&& <Route path = "/identifiers" element = {        
+        <section className = 'd-flex flex-column flex-fill p-5'>
+          <TablePage title = {"All Identifiers"} fetchFunction = {getAllIdentifiers} fetchKey = {"identifiers"}/>
+        </section>
+        } />}
         {routes.includes("prices")&& <Route path = "/prices" element = {<Prices/>} />}
         {routes.includes("fx rates")&& <Route path = "/fx rates" element = {<MainArea source= {"fx rates"}/>} />}
         {routes.includes("interest rates")&& <Route path = "/interest rates" element = {<MainArea source= {"interest rates"}/>} />}
