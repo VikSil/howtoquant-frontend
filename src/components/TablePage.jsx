@@ -7,27 +7,37 @@ import GreenTable from './GreenTable';
 
 export default function TablePage(props){  
 
-    const {title, fetchFunction, fetchParams, fetchKey, onceDone} = props
+    const {title, fetchFunction, fetchParams, fetchKey, signalLoading, signalError} = props
 
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null);
-
     const [items, setItems] = useState([{}])
 
     useEffect(()=>{
         setError(null)
+        if (signalError){
+            signalError(false)
+        }
         setIsLoading(true)
+        if (signalLoading) {
+            signalLoading(true)
+        }
         fetchFunction(fetchParams)
+
         .then((data) => {
-            console.log(data)
             setItems(data[fetchKey]);
         })
         .catch((error)=>{
             setError(error);
+            if (signalError){
+                signalError(true)
+            }
         })
         .finally(()=>{
             setIsLoading(false);
-            onceDone(false)
+            if (signalLoading) {
+                signalLoading(false)
+            }
         })
         
     }, [title, fetchParams])

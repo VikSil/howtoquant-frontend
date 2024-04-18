@@ -35,7 +35,6 @@ export default function PriceDownload(props){
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(allTickers)
         if (ticker && dateFrom && dateTo){
             if (allTickers.includes(ticker.toUpperCase())){
                 if (dateFrom<dateTo){

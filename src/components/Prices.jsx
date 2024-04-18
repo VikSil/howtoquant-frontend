@@ -2,7 +2,8 @@ import {useEffect, useState } from 'react'
 
 import GreenButton from './GreenButton';
 import PriceDownload from './PriceDownload';
-import ReviewDownload from './ReviewDownload';
+import ViewDownload from './ViewDownload';
+import ViewPrices from './ViewPrices';
 
 export default function NewInstrument(){  
 
@@ -41,11 +42,11 @@ export default function NewInstrument(){
             </div>
             <section className = "d-flex justify-content-center top-split mt-4 py-5">
                 {subpage === "viewPrices"?
-                    <p>This will be manual page</p>
+                    <ViewPrices />
                 : subpage=== "newDownload" ?
                     <PriceDownload callbackFunc ={returnPrices} />   
                 : subpage=== "viewDownload" ?
-                    <ReviewDownload initDownloadId = {downloadId} initIsLoading= {showDownload}/>
+                    <ViewDownload initDownloadId = {downloadId} initIsLoading= {showDownload}/>
                 : null  
                 }
             </section> 

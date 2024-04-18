@@ -79,6 +79,18 @@ export const getIdentifierTypes = () => {
       });
   };
 
+  export const putSavePriceDownload = (data) => {
+    let URL = APIroot+"marketdata/api/prices/download";
+    return axios
+      .put(URL, data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
   export const getPrices = () => {
     let URL = APIroot+"marketdata/api/prices";
     return axios

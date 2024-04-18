@@ -47,6 +47,19 @@ input, select {
   margin: auto;
 }
 
+input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: darkolivegreen;
+        content: '';
+        display: inline-block;
+        border: 2px solid moccasin;
+}
+
 input:hover, select:hover {
     background-color: lightyellow;
 }
