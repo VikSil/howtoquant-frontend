@@ -28,6 +28,12 @@ h2 {
   margin-bottom: 0px;
 }
 
+h3 {
+  color: darkolivegreen;
+  padding-bottom: 15px;
+  margin-bottom: 0px;
+}
+
 span {
   margin-bottom: 10px;
   margin-top: 5px;
@@ -80,7 +86,6 @@ input:-webkit-autofill:focus{
 }
 
 .spaced-div > * {
-   margin-left: 1%;
    margin-right: 1%;
 }
 

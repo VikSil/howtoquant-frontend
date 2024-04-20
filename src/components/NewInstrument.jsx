@@ -1,13 +1,12 @@
 import {useState } from 'react'
+import {useSearchParams} from 'react-router-dom'
 
 import GreenButton from './GreenButton';
 
-export default function NewInstrument(){  
+export default function NewInstrument(props){  
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [error, setError] = useState(null);
-
-    const [subpage, setSubPage] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [subpage, setSubPage] = useState(searchParams.get("subpage"));
 
     const setManual = ()=> {
         setSubPage("manual")
@@ -19,18 +18,19 @@ export default function NewInstrument(){
 
     let content = (
         <>
-            <h2>Add new instrument</h2>
+            <h2>New Instrument</h2>
             <div className='d-flex justify-content-center spaced-div'>
-                <GreenButton text = {"Manually"} clickFunction= {setManual}/>
+                <GreenButton text = {"Input Form"} clickFunction= {setManual}/>
                 <GreenButton text = {"Download"} clickFunction= {setDownload}/>
             </div>
+            <section className = "d-flex justify-content-center top-split mt-4 py-5">
             {subpage === "manual"?
-                <p>This will be manual page</p>
+                <p>Under construction</p>
             : subpage=== "download" ?
                 <p>This will be download page</p>      
               : null  
         }
-            
+        </section>   
         </>         
     )
 

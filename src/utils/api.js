@@ -16,7 +16,7 @@ export const getIdentifierTypes = () => {
   };
 
   export const getIdentifierCodes = () => {
-    let URL = APIroot+"staticdata/api/idenitifiers/codes";
+    let URL = APIroot+"staticdata/api/identifiers/codes";
 
     return axios
       .get(URL)
@@ -42,11 +42,25 @@ export const getIdentifierTypes = () => {
   };
 
   export const getAllIdentifiers = () => {
-    let URL = APIroot+"staticdata/api/idenitifiers/all";
+    let URL = APIroot+"staticdata/api/identifiers/all";
 
     return axios
       .get(URL)
       .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+
+  export const getInstrumentByTicker = (ticker) => {
+    let URL = APIroot+"staticdata/api/instruments/"+ticker;
+    console.log(URL)
+    return axios
+      .get(URL)
+      .then((response) => {
+        console.log(response.data)
         return response.data;
       })
       .catch((error) => {

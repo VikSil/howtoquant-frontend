@@ -9,6 +9,7 @@ import TitleBar from './components/TitleBar'
 import NavPane from './components/NavPane'
 import NewInstrument from './components/NewInstrument'
 import Prices from './components/Prices'
+import Equities from './components/Equities'
 
 
 
@@ -71,11 +72,7 @@ function App() {
         {routes.includes("funds & books")&& <Route path = "/funds & books" element = {<MainArea source= {"funds & books"}/>} />}
         {routes.includes("strategies")&& <Route path = "/strategies" element = {<MainArea source= {"strategies"}/>} />}
         {routes.includes("broker accounts")&& <Route path = "/broker accounts" element = {<MainArea source= {"broker accounts"}/>} />}
-        {routes.includes("equities")&& <Route path = "/equities" element = {
-        <section className = 'd-flex flex-column flex-fill p-5'>
-          <TablePage title = {"All Equities"} fetchFunction = {getAllEquities} fetchKey = {"equities"}/>
-        </section>
-        } />}
+        {routes.includes("equities")&& <Route path = "/equities" element = {<Equities/>} />}
         {routes.includes("new instrument")&& <Route path = "/new instrument" element = {<NewInstrument/>} />}
         {routes.includes("identifiers")&& <Route path = "/identifiers" element = {        
         <section className = 'd-flex flex-column flex-fill p-5'>
