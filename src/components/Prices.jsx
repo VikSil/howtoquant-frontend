@@ -5,7 +5,7 @@ import PriceDownload from './PriceDownload';
 import ViewDownload from './ViewDownload';
 import ViewPrices from './ViewPrices';
 
-export default function NewInstrument(){  
+export default function Prices(){  
 
     const [subpage, setSubPage] = useState(null);
     const [downloadId, setDownloadId] = useState(undefined)
