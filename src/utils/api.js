@@ -56,11 +56,9 @@ export const getIdentifierTypes = () => {
 
   export const getInstrumentByTicker = (ticker) => {
     let URL = APIroot+"staticdata/api/instruments/"+ticker;
-    console.log(URL)
     return axios
       .get(URL)
       .then((response) => {
-        console.log(response.data)
         return response.data;
       })
       .catch((error) => {
@@ -68,6 +66,17 @@ export const getIdentifierTypes = () => {
       });
   };
 
+  export const putInstrumentDownload = (data) => {
+    let URL = APIroot+"staticdata/api/instruments";
+    return axios
+      .put(URL, data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
 
   export const putPriceDownload = (data) => {
     let URL = APIroot+"marketdata/api/prices/new";

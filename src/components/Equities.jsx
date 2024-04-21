@@ -1,5 +1,5 @@
 import {useEffect, useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link ,useSearchParams} from "react-router-dom"
 
 import GreenButton from './GreenButton';
 import TablePage from './TablePage';
@@ -9,7 +9,8 @@ import {getAllEquities,getInstrumentByTicker} from '../utils/api';
 
 export default function Equities(){  
 
-    const [subpage, setSubPage] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [subpage, setSubPage] = useState(searchParams.get("subpage"));
 
     useEffect(() =>{
     
@@ -29,7 +30,7 @@ export default function Equities(){
             <div className='d-flex justify-content-center spaced-div'>
                 <GreenButton text = {"View All"} clickFunction= {viewEquities}/>
                 <GreenButton text = {"View Ticker"} clickFunction= {viewTicker}/>
-                <Link ClassName = 'px0' to={`/new instrument?subpage=download`}>
+                <Link className = 'px0' to={`/new instrument?subpage=download`}>
                     <GreenButton text = {"Download"}/>
                 </Link>
                 
@@ -38,7 +39,7 @@ export default function Equities(){
                 {subpage === "viewEquities"?
                     <TablePage title = {"All Equities"} fetchFunction = {getAllEquities} fetchKey = {"equities"}/>
                 : subpage=== "viewTicker" ?
-                    <ViewFieldList labelText = {"Ticker"} itemTitle = {"Instrument details"}/>
+                    <ViewFieldList labelText = {"Ticker"} itemTitle = {"Instrument details"} initDownloadId={searchParams.get("downloadId")}/>
                 : null  
                 }
             </section> 

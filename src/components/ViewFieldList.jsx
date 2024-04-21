@@ -7,11 +7,11 @@ import {getInstrumentByTicker} from '../utils/api'
 
 export default function ViewFieldList(props){
 
-    const {itemTitle, initDownloadId, labelText,initIsLoading= false} = props
+    const {itemTitle, initDownloadId, labelText} = props
 
     const [textbox, setTextbox] = useState('')
     const [downloadId, setDownloadId] = useState(initDownloadId)
-    const [isLoading, setIsLoading] = useState(initIsLoading)
+    const [isLoading, setIsLoading] = useState(false)
     const [isLoadingError, setIsLoadingError] = useState(false)
  
     useEffect(() =>{

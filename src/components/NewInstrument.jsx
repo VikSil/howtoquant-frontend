@@ -2,6 +2,7 @@ import {useState } from 'react'
 import {useSearchParams} from 'react-router-dom'
 
 import GreenButton from './GreenButton';
+import InstrumentDownload from './InstrumentDownload';
 
 export default function NewInstrument(props){  
 
@@ -25,9 +26,9 @@ export default function NewInstrument(props){
             </div>
             <section className = "d-flex justify-content-center top-split mt-4 py-5">
             {subpage === "manual"?
-                <p>Under construction</p>
+                <p>Under construction...</p>
             : subpage=== "download" ?
-                <p>This will be download page</p>      
+                <InstrumentDownload/>     
               : null  
         }
         </section>   
