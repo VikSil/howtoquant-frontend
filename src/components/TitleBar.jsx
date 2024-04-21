@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Link } from "react-router-dom"
 import { UserContext } from '../context/userContext';
 import logo from '../assets/img/logo.png'
 
@@ -14,7 +15,7 @@ export default function TitleBar(){
                 <div className=' green-bckgr  d-flex py-2 px-2 justify-content-between align-items-center'>
                     <div className='d-flex align-items-center'>
                     {/* LOGO TO BE IMPROVED AND ALIGNED WITH NAV PANE*/}
-                    <img className='logo p-2 mx-1' src = {logo} alt = "logo"></img> 
+                    <Link to="/"><img className='logo p-2 mx-1' src = {logo} alt = "logo"></img> </Link>
                     <p className='title px-2'>How to Quant?</p>
                     </div>
                     <div>

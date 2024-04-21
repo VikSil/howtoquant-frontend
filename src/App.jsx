@@ -11,13 +11,11 @@ import NewInstrument from './components/NewInstrument'
 import Prices from './components/Prices'
 import Equities from './components/Equities'
 
-
-
 import MainArea from './components/MainArea'
 import TablePage from './components/TablePage'
 
 
-import {getAllIdentifiers, getAllEquities} from './utils/api';
+import {getAllIdentifiers} from './utils/api';
 
 
 function App() {
@@ -25,11 +23,10 @@ function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
     /* THIS WILL BE RETURNED FROM BACKEND CONFIG APP, DEPENDING ON USER PERMISSIONS  */
-    const [categories, setCategories] = useState([{"organisation": ["funds & books","strategies", "broker accounts"]}, 
+    const [categories, setCategories] = useState([ 
     {"instruments": ["equities", "new instrument"]},
-    {"market data":["identifiers", "prices", "fx rates", "interest rates","analytics"]}, 
-    {"accounting": ["trades list", "PnL ladder","trade screen"]},
-    {"sources":[]}])
+    {"market data":["identifiers", "prices"]}, 
+    ])
 
     const [routes, setRoutes] = useState([])
 
@@ -68,11 +65,8 @@ function App() {
       <NavPane categories = {categories}/>
       <Routes> 
         {/* TO BE REPLACED WITH SECTION SPECIFIC PAGES */}
-        <Route path = "/" element = {<MainArea source = {"root"}/>} />
-        {routes.includes("funds & books")&& <Route path = "/funds & books" element = {<MainArea source= {"funds & books"}/>} />}
-        {routes.includes("strategies")&& <Route path = "/strategies" element = {<MainArea source= {"strategies"}/>} />}
-        {routes.includes("broker accounts")&& <Route path = "/broker accounts" element = {<MainArea source= {"broker accounts"}/>} />}
-        {routes.includes("equities")&& <Route path = "/equities" element = {<Equities/>} />}
+        <Route path = "/" element = {<MainArea/>} />
+         {routes.includes("equities")&& <Route path = "/equities" element = {<Equities/>} />}
         {routes.includes("new instrument")&& <Route path = "/new instrument" element = {<NewInstrument/>} />}
         {routes.includes("identifiers")&& <Route path = "/identifiers" element = {        
         <section className = 'd-flex flex-column flex-fill p-5'>
@@ -80,19 +74,12 @@ function App() {
         </section>
         } />}
         {routes.includes("prices")&& <Route path = "/prices" element = {<Prices/>} />}
-        {routes.includes("fx rates")&& <Route path = "/fx rates" element = {<MainArea source= {"fx rates"}/>} />}
-        {routes.includes("interest rates")&& <Route path = "/interest rates" element = {<MainArea source= {"interest rates"}/>} />}
-        {routes.includes("analytics")&& <Route path = "/analytics" element = {<MainArea source= {"analytics"}/>} />}
-        {routes.includes("trades list")&& <Route path = "/trades list" element = {<MainArea source= {"trades list"}/>} />}
-        {routes.includes("PnL ladder")&& <Route path = "/PnL ladder" element = {<MainArea source= {"PnL ladder"}/>} />}
-        {routes.includes("trade screen")&& <Route path = "/trade screen" element = {<MainArea source= {"trade screen"}/>} />}
-        {routes.includes("sources")&& <Route path = "/sources" element = {<MainArea source= {"sources"}/>} />}
-      </Routes>
+       </Routes>
     </section >
     </>
   )
 
-  // 576 is Bootstrap's large brekapoint
+  // 992 is Bootstrap's large brekapoint
   if (screenWidth<=992){ 
     content = 
     <>

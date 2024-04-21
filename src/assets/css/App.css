@@ -97,6 +97,11 @@ input:-webkit-autofill:focus{
   border-top: 1px solid darkolivegreen;
 }
 
+.green-bold-link {
+  color: inherit;
+  font-weight:600;
+}
+
 .left-aligned-input{
   float:left;
   padding-left: 10px;
