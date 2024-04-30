@@ -34,7 +34,7 @@ export default function InstrumentDownload(){
         putInstrumentDownload(newDownload)
         .then((data) =>{
             setAllTickers(allTickers=>[...allTickers, ticker])
-            data.status === "OK" ? setInstId(data.result.instrument_id):setError(data.result)
+            data.status === "OK" ? setInstId(data.data.instrument_id):setError(data.data)
         })
         .catch((error) =>{
             console.log(error)

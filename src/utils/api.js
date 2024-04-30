@@ -8,7 +8,7 @@ export const getIdentifierTypes = () => {
     return axios
       .get(URL)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -21,7 +21,7 @@ export const getIdentifierTypes = () => {
     return axios
       .get(URL)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -34,7 +34,7 @@ export const getIdentifierTypes = () => {
     return axios
       .get(URL)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -47,7 +47,7 @@ export const getIdentifierTypes = () => {
     return axios
       .get(URL)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -59,7 +59,7 @@ export const getIdentifierTypes = () => {
     return axios
       .get(URL)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -83,7 +83,7 @@ export const getIdentifierTypes = () => {
     return axios
       .put(URL, data)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -95,7 +95,7 @@ export const getIdentifierTypes = () => {
     return axios
       .get(URL)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -107,7 +107,7 @@ export const getIdentifierTypes = () => {
     return axios
       .put(URL, data)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
@@ -119,7 +119,7 @@ export const getIdentifierTypes = () => {
     return axios
       .get(URL)
       .then((response) => {
-        return response.data;
+        return response.data.data;
       })
       .catch((error) => {
         throw error;
