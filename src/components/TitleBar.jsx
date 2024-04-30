@@ -21,6 +21,7 @@ export default function TitleBar(){
                     <div>
                         <p>User: {user.username}</p>
                         <p>Org: {user.organisation}</p>
+                        <p>Version: {user.version}</p>
                     </div>
                 </div>
             </div>
