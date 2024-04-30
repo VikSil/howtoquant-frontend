@@ -9,7 +9,7 @@ body {
 }
 
 body p, label, legend {
-  font-size: large;
+  font-size: 100%;
   color: darkolivegreen;
 }
 
@@ -116,7 +116,7 @@ input:-webkit-autofill:focus{
 
 .error-class {
   color:red;
-  font-size: small;
+  font-size: 85%;
   font-weight: 600;
   padding-top: 5px;
 }
