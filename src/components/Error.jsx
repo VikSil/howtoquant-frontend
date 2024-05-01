@@ -10,7 +10,9 @@ export default function Error(props){
             {errorCode === 402 && <p className="text-center mb-4">Forbidden</p> }
             {errorCode === 404 && <p className="text-center mb-4">404 - Page not found</p> }
             {errorCode === 408 && <p className="text-center mb-4">Request Timeout</p> }
-            {errorCode === 429 && <p className="text-center mb-4">Too Many requests</p> }                
+            {errorCode === 429 && <p className="text-center mb-4">Too Many requests</p> }
+            {errorCode === 500 && <p className="text-center mb-4">Server Error</p> }    
+            {errorCode === 503 && <p className="text-center mb-4">Service Unavailable</p> }             
         </main>      
         </>
     )
