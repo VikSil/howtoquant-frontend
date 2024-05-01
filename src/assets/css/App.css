@@ -1,11 +1,11 @@
 html, body, #root {
     height: 100%;    
-    background-color: rgba(255,255,224,0.2);
+    background-color: rgba(255,255,239);
 }
 
+
 body {
-  font-family: "Financier Display", "ArgestaHairline", sans-serif;
-   
+  font-family: "Financier Display", "ArgestaHairline", sans-serif;   
 }
 
 body p, label, legend {
