@@ -47,7 +47,7 @@ export default function TablePage(props){
     let content = (
         <>
             <h2>{title}</h2>
-            <GreenTable headers = {Object.keys(items[0])} data = {items}/>
+            <GreenTable headers = {Object.keys(items[0])} content = {items}/>
         </>         
     )
 

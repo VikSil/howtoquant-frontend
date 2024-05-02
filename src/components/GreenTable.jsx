@@ -5,7 +5,7 @@ import 'regenerator-runtime'
 import { useMemo ,useState} from 'react'
 import { useTable, useSortBy, useGlobalFilter, useFilters, useAsyncDebounce, usePagination } from 'react-table'
 
-import { makeTableHeaders } from '../utils/utils'
+import { cleanData, makeTableHeaders } from '../utils/utils'
 
 import GreenButton from './GreenButton';
 
@@ -13,9 +13,10 @@ import '../assets/css/GreenTable.css'
 
 
 export default function GreenTable(props){
-    const {headers, data} = props
+    const {headers, content} = props
 
     const columns = makeTableHeaders(headers)
+    const data = cleanData(content)
 
 
     const {getTableProps,
@@ -36,7 +37,7 @@ export default function GreenTable(props){
 
     }= useTable ({
         columns : useMemo(() => columns, []),
-        data:useMemo(() => data, []),
+        data : useMemo(() => data, []),
     }, useFilters, useGlobalFilter,useSortBy,usePagination)
 
     const {globalFilter, pageIndex, pageSize} = state
@@ -70,7 +71,7 @@ export default function GreenTable(props){
 
 return (
     <>
-        {pageCount>0 ? <>
+        {<>
         <span>
                 Search : {' '}
                 <input value = {globalFilterValue || ''}
@@ -123,9 +124,9 @@ return (
                 }
             </tbody>
         </table> 
+        </>}
 
-        <footer className='mt-2 d-flex justify-content-between'>   
-
+        {(canPreviousPage ||canNextPage) ? <><footer className='mt-2 d-flex justify-content-between'>   
                 <span>
                     Page {' '}
                     <input id = "goto-input" type = 'number' value={gotoInputValue} 
@@ -138,22 +139,20 @@ return (
                     <GreenButton text = {"Go"} clickFunction = {() =>gotoPage(gotoPageNumber)}/>
                 </span>
 
-                {(canPreviousPage ||canNextPage) ? 
-                    <div>                
-                        <GreenButton text = {"<<"} isDisabled = {!canPreviousPage} clickFunction = {() =>gotoPage(0)}/>
-                        <GreenButton text = {"<"} isDisabled = {!canPreviousPage} clickFunction = {() =>previousPage()}/>
-                        <span>
-                            <strong className='ms-2'>
-                            page {' '}                    
-                                {pageIndex + 1} of {pageOptions.length}
-                            </strong>
-                            {' '}
-                        </span>
+                <div>                
+                    <GreenButton text = {"<<"} isDisabled = {!canPreviousPage} clickFunction = {() =>gotoPage(0)}/>
+                    <GreenButton text = {"<"} isDisabled = {!canPreviousPage} clickFunction = {() =>previousPage()}/>
+                    <span>
+                        <strong className='ms-2'>
+                        page {' '}                    
+                            {pageIndex + 1} of {pageOptions.length}
+                        </strong>
+                        {' '}
+                    </span>
 
-                        <GreenButton text = {">"} isDisabled = {!canNextPage} clickFunction = {() =>nextPage()}/>
-                        <GreenButton text = {">>"} isDisabled = {!canNextPage} clickFunction = {() =>gotoPage(pageCount-1)}/>
-                    </div>
-                :null }
+                    <GreenButton text = {">"} isDisabled = {!canNextPage} clickFunction = {() =>nextPage()}/>
+                    <GreenButton text = {">>"} isDisabled = {!canNextPage} clickFunction = {() =>gotoPage(pageCount-1)}/>
+                </div>
                 
                 <span className = "d-flex flex-column" id = "rows-per-page-span">
                     <div>
@@ -172,10 +171,9 @@ return (
                         </div>
                     </div>
                 </span>
-        </footer>
-        </>
-        :
-        <></>}
+            </footer>
+        </> 
+        : null}
     </>  
 )
 }
