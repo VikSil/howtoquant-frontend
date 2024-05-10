@@ -7,9 +7,9 @@ import { useEffect, useState } from 'react'
 
 import TitleBar from './components/layout/TitleBar'
 import NavPane from './components/layout/NavPane'
-import NewInstrument from './components/NewInstrument'
-import Prices from './components/Prices'
-import Equities from './components/Equities'
+import NewInstrument from './components/pages/NewInstrument'
+import Prices from './components/pages/Prices'
+import Equities from './components/pages/Equities'
 
 
 import MainArea from './components/pages/MainArea'

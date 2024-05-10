@@ -1,11 +1,11 @@
 import {useEffect, useState } from 'react'
 
-import GreenButton from './primitives/GreenButton';
-import PriceDownload from './PriceDownload';
-import ViewDownload from './ViewDownload';
-import TableContainer from './containers/TableContainer'
+import GreenButton from '../primitives/GreenButton';
+import PriceDownload from '../PriceDownload';
+import ViewDownload from '../ViewDownload';
+import TableContainer from '../containers/TableContainer'
 
-import {getPrices} from '../utils/api';
+import {getPrices} from '../../utils/api';
 
 export default function Prices(){  
 
@@ -17,16 +17,6 @@ export default function Prices(){
     
       }, [subpage])
 
-    const viewPrices = ()=> {
-        setSubPage("viewPrices")
-    }
-
-    const newDownload = () => {
-        setSubPage("newDownload")
-    }
-    const viewDownload = () => {
-        setSubPage("viewDownload")
-    }
 
     const returnPrices = (newDownloadId) =>{
         setDownloadId(newDownloadId)
@@ -34,13 +24,14 @@ export default function Prices(){
         setSubPage("viewDownload")
     }
 
-    let content = (
-        <>
+
+    return (
+        <main className = "d-flex flex-column flex-fill p-5">
             <h2>Market Prices</h2>
             <div className='d-flex justify-content-center spaced-div'>
-                <GreenButton text = {"View Prices"} clickFunction= {viewPrices}/>
-                <GreenButton text = {"New Download"} clickFunction= {newDownload}/>
-                <GreenButton text = {"View Download"} clickFunction= {viewDownload}/>
+                <GreenButton text = {"View Prices"} clickFunction= {()=> {setSubPage("viewPrices")}}/>
+                <GreenButton text = {"New Download"} clickFunction= {()=> {setSubPage("newDownload")}}/>
+                <GreenButton text = {"View Download"} clickFunction= {()=> {setSubPage("viewDownload")}}/>
             </div>
             <section className = "d-flex justify-content-center top-split mt-4 py-5">
                 {subpage === "viewPrices"?
@@ -52,12 +43,6 @@ export default function Prices(){
                 : null  
                 }
             </section> 
-        </>         
-    )
-
-    return (
-        <main className = "d-flex flex-column flex-fill p-5">
-            {content}
         </main>
     )
 

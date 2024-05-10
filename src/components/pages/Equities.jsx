@@ -1,11 +1,11 @@
 import {useEffect, useState } from 'react'
 import { Link ,useSearchParams} from "react-router-dom"
 
-import GreenButton from './primitives/GreenButton';
-import TableContainer from './containers/TableContainer';
-import ViewFieldList from './ViewFieldList';
+import GreenButton from '../primitives/GreenButton';
+import TableContainer from '../containers/TableContainer';
+import ViewFieldList from '../ViewFieldList';
 
-import {getAllEquities} from '../utils/api';
+import {getAllEquities} from '../../utils/api';
 
 export default function Equities(){  
 
@@ -16,20 +16,13 @@ export default function Equities(){
     
       }, [subpage])
 
-    const viewEquities = ()=> {
-        setSubPage("viewEquities")
-    }
 
-    const viewTicker = () => {
-        setSubPage("viewTicker")
-    }
-   
-    let content = (
-        <>
+    return (
+        <main className = "d-flex flex-column flex-fill p-5">
             <h2>Equities</h2>
             <div className='d-flex justify-content-center spaced-div'>
-                <GreenButton text = {"View All"} clickFunction= {viewEquities}/>
-                <GreenButton text = {"View Ticker"} clickFunction= {viewTicker}/>
+                <GreenButton text = {"View All"} clickFunction= {()=> {setSubPage("viewEquities")}}/>
+                <GreenButton text = {"View Ticker"} clickFunction= {() => {setSubPage("viewTicker")}}/>
                 <Link className = 'px0' to={`/new instrument?subpage=download`}>
                     <GreenButton text = {"Download"}/>
                 </Link>
@@ -43,12 +36,6 @@ export default function Equities(){
                 : null  
                 }
             </section> 
-        </>         
-    )
-
-    return (
-        <main className = "d-flex flex-column flex-fill p-5">
-            {content}
         </main>
     )
 
