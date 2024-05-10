@@ -3,7 +3,9 @@ import {useEffect, useState } from 'react'
 import GreenButton from './primitives/GreenButton';
 import PriceDownload from './PriceDownload';
 import ViewDownload from './ViewDownload';
-import ViewPrices from './ViewPrices';
+import TableContainer from './containers/TableContainer'
+
+import {getPrices} from '../utils/api';
 
 export default function Prices(){  
 
@@ -42,7 +44,7 @@ export default function Prices(){
             </div>
             <section className = "d-flex justify-content-center top-split mt-4 py-5">
                 {subpage === "viewPrices"?
-                    <ViewPrices />
+                    <TableContainer title = {"Price data"} fetchFunction = {getPrices} fetchKey = {"prices"} />
                 : subpage=== "newDownload" ?
                     <PriceDownload callbackFunc ={returnPrices} />   
                 : subpage=== "viewDownload" ?
