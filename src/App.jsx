@@ -5,17 +5,19 @@ import {Routes, Route} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 
-import TitleBar from './components/TitleBar'
-import NavPane from './components/NavPane'
+import TitleBar from './components/layout/TitleBar'
+import NavPane from './components/layout/NavPane'
 import NewInstrument from './components/NewInstrument'
 import Prices from './components/Prices'
 import Equities from './components/Equities'
 
-import MainArea from './components/MainArea'
-import TablePage from './components/TablePage'
+
+import MainArea from './components/pages/MainArea'
+import TableContainer from './components/containers/TableContainer'
 
 
 import {getAllIdentifiers} from './utils/api';
+import Loading from './components/stateless/Loading'
 
 
 function App() {
@@ -25,7 +27,8 @@ function App() {
     /* THIS WILL BE RETURNED FROM BACKEND CONFIG APP, DEPENDING ON USER PERMISSIONS  */
     const [categories, setCategories] = useState([ 
     {"instruments": ["equities", "new instrument"]},
-    {"market data":["identifiers", "prices"]}, 
+    {"market data":["identifiers", "prices"]},
+      {"Test": ["test"]}, 
     ])
 
     const [routes, setRoutes] = useState([])
@@ -70,10 +73,11 @@ function App() {
         {routes.includes("new instrument")&& <Route path = "/new instrument" element = {<NewInstrument/>} />}
         {routes.includes("identifiers")&& <Route path = "/identifiers" element = {        
         <section className = 'd-flex flex-column flex-fill p-5'>
-          <TablePage title = {"All Identifiers"} fetchFunction = {getAllIdentifiers} fetchKey = {"identifiers"}/>
+          <TableContainer title = {"All Identifiers"} fetchFunction = {getAllIdentifiers} fetchKey = {"identifiers"}/>
         </section>
         } />}
         {routes.includes("prices")&& <Route path = "/prices" element = {<Prices/>} />}
+        {routes.includes("test")&& <Route path = "/test" element = {<Loading />} />}
        </Routes>
     </section >
     </>

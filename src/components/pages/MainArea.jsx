@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom"
 
-import '../assets/css/MainArea.css'
+import '../../assets/css/MainArea.css'
 
 export default function MainArea(){  
 

@@ -5,11 +5,11 @@ import 'regenerator-runtime'
 import { useMemo ,useState} from 'react'
 import { useTable, useSortBy, useGlobalFilter, useFilters, useAsyncDebounce, usePagination } from 'react-table'
 
-import { cleanData, makeTableHeaders } from '../utils/utils'
+import { cleanData, makeTableHeaders } from '../../utils/utils'
 
 import GreenButton from './GreenButton';
 
-import '../assets/css/GreenTable.css'
+import '../../assets/css/GreenTable.css'
 
 
 export default function GreenTable(props){

@@ -1,7 +1,7 @@
 import {useState } from 'react'
 import {useSearchParams} from 'react-router-dom'
 
-import GreenButton from './GreenButton';
+import GreenButton from './primitives/GreenButton';
 import InstrumentDownload from './InstrumentDownload';
 
 export default function NewInstrument(props){  

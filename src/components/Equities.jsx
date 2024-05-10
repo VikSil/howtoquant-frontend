@@ -1,15 +1,15 @@
 import {useEffect, useState } from 'react'
 import { Link ,useSearchParams} from "react-router-dom"
 
-import GreenButton from './GreenButton';
-import TablePage from './TablePage';
+import GreenButton from './primitives/GreenButton';
+import TableContainer from './containers/TableContainer';
 import ViewFieldList from './ViewFieldList';
 
-import {getAllEquities,getInstrumentByTicker} from '../utils/api';
+import {getAllEquities} from '../utils/api';
 
 export default function Equities(){  
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const [subpage, setSubPage] = useState(searchParams.get("subpage"));
 
     useEffect(() =>{
@@ -37,7 +37,7 @@ export default function Equities(){
             </div>
             <section className = "d-flex justify-content-center top-split mt-4 py-5">
                 {subpage === "viewEquities"?
-                    <TablePage title = {"All Equities"} fetchFunction = {getAllEquities} fetchKey = {"equities"}/>
+                    <TableContainer title = {"All Equities"} fetchFunction = {getAllEquities} fetchKey = {"equities"}/>
                 : subpage=== "viewTicker" ?
                     <ViewFieldList labelText = {"Ticker"} itemTitle = {"Instrument details"} initDownloadId={searchParams.get("downloadId")}/>
                 : null  

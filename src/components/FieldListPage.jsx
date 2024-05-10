@@ -1,7 +1,7 @@
 import {useEffect, useState } from 'react'
 
-import Loading from './Loading';
-import Error from './Error';
+import Loading from './stateless/Loading';
+import Error from './stateless/Error';
 
 import GreenFieldList from './GreenFieldList';
 

@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { Link } from "react-router-dom"
-import { UserContext } from '../context/userContext';
-import logo from '../assets/img/logo.png'
+import { UserContext } from '../../context/userContext';
+import logo from '../../assets/img/logo.png'
 
-import '../assets/css/TitleBar.css'
+import '../../assets/css/TitleBar.css'
 
 export default function TitleBar(){
     

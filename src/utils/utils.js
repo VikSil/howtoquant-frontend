@@ -1,4 +1,4 @@
-import { ColumnFilter } from "../components/ColumnFilter"
+import { ColumnFilter } from "./ColumnFilter"
 
 
 export const makeTableHeaders = (columns)=>{

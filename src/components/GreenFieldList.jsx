@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import GreenTextBox from './primitives/GreenTextBox'
 
 export default function GreenFieldList(props){
 
@@ -14,15 +15,17 @@ export default function GreenFieldList(props){
         <>
             <div className='container'>
                         {Object.entries(fieldDict).map(([key,value])=>{
+
+                            const fieldConfig= {
+                                "label": key,
+                                "labelLocation": "left-apart",
+                                "id": key,
+                                "defaultValue": value,
+                                "readOnly": true,
+                            }
+
                             return (
-                                <div className='row py-2' key = {key}>
-                                    <div className='col text-end'>
-                                        <label htmlFor={`${key.toLowerCase().replace(' ','-')}-input`} className='me-2'> {(key[0].toUpperCase()+key.substring(1)).replace("_", " ")}:</label>                                        
-                                    </div>
-                                    <div className='col text-start'>
-                                        <input id = {`${key.toLowerCase().replace(' ','-')}-input`} className='me-2' type = "text" defaultValue = {value} readOnly ={fieldState} />
-                                    </div>
-                                </div>
+                                <GreenTextBox fieldProps = {fieldConfig} key = {key}/>
                             )
                         })}                    
             </div>

@@ -1,6 +1,8 @@
 import {useState,useEffect } from 'react'
-import GreenButton from './GreenButton';
-import TablePage from './TablePage'
+import GreenButton from './primitives/GreenButton';
+import TableContainer from './containers/TableContainer'
+import GreenTextBox from './primitives/GreenTextBox';
+import GreenRadioButtons from './primitives/GreenRadioButtons';
 
 import {getPriceDownload, putSavePriceDownload} from '../utils/api';
 
@@ -53,26 +55,52 @@ export default function ViewDownload(props){
         setTextbox(event.target.value)
     }
 
+    const handleRadioBtn = (event) =>{
+        setSaveType(event.target.value)
+    }
+
+    const inputConfig= {
+        "label": "Download Id",
+        "labelLocation": "left",
+        "id": 'downloadid-input',
+        "value": textbox,
+        "onChange": handleTextbox,
+    }
+
+    const radioBtnConfig = {
+        "name": "save-type",
+        "buttons" : [{
+            "id":"save-missing",
+            "value": "missing",
+            "checked": saveType==="missing"?true:false,
+            "onChange": handleRadioBtn,
+            "label": "Save Missing Only",
+        },
+        {
+            "id":"save-overrideall",
+            "value": "overrideall",
+            "checked": saveType==="overrideall"?true:false,
+            "onChange": handleRadioBtn,
+            "label": "Save All and Override",
+        }]
+    }
+
     return (
         <>
             <div className='d-flex flex-column'>
                 <div>
                     <form onSubmit = {handleDownloadRequest}>        
                         <fieldset className='pb-5 text-center'>
-
-                            <label htmlFor='downloadid-input' className='me-2'> Download Id:</label>
-                            <input id = 'downloadid-input' className='me-2' type = "text" value = {textbox} onChange = {handleTextbox}/>
+                            <GreenTextBox fieldProps = {inputConfig}/>
                             <GreenButton text = "View" btntype = "submit" isDisabled = {isLoading}/>
                         </fieldset>                
                     </form>
                 </div>
-                {downloadId && <TablePage title = {"Downloaded data"} fetchFunction = {getPriceDownload} fetchParams = {downloadId} fetchKey = {"prices"} signalLoading = {setIsLoading} signalError={setIsLoadingError}/>}
+                {downloadId && <TableContainer title = {"Downloaded data"} fetchFunction = {getPriceDownload} fetchParams = {downloadId} fetchKey = {"prices"} signalLoading = {setIsLoading} signalError={setIsLoadingError}/>}
                 {!isLoading && !isLoadingError && downloadId && <div>
                     <form onSubmit = {handlePriceSave}> 
                         <fieldset className='pt-4 pb-2 text-end'>
-                            <input type="radio" name= "save-type" id = "save-missing-radio" value = "missing" checked = {saveType==="missing"?true:false} onChange={(event)=>{setSaveType(event.target.value)}}/><label htmlFor = 'save-missing-radio' className='py-1 ps-1'> Save Missing Only</label>
-                            <br></br>
-                            <input type="radio" name= "save-type" id = "save-overrideall-radio" value = "overrideall" checked = {saveType==="overrideall"?true:false}  onChange={(event)=>{setSaveType(event.target.value)}}/><label htmlFor = 'save-overrideall-radio' className='py-1 ps-1'> Save All and Override </label>
+                            <GreenRadioButtons boxProps = {radioBtnConfig}/>
                         </fieldset>
                         <fieldset className='text-end'>
                             <GreenButton text = "Save" btntype = "submit" isDisabled = {isSaving}/>

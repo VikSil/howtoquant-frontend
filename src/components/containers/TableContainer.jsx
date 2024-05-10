@@ -1,11 +1,11 @@
 import {useEffect, useState } from 'react'
 
-import Loading from './Loading';
-import Error from './Error';
+import Loading from '../stateless/Loading';
+import Error from '../stateless/Error';
 
-import GreenTable from './GreenTable';
+import GreenTable from '../primitives/GreenTable';
 
-export default function TablePage(props){  
+export default function TableContainer(props){  
 
     const {title, fetchFunction, fetchParams, fetchKey, signalLoading, signalError} = props
 

@@ -3,10 +3,12 @@ import {useState,useEffect } from 'react'
 
 import DatePicker from "react-multi-date-picker"
 
-import GreenButton from './GreenButton';
+import GreenButton from './primitives/GreenButton';
+import GreenTextBox from './primitives/GreenTextBox';
+import GreenCheckBox from './primitives/GreenCheckBox';
 
 import {putPriceDownload, getIdentifierCodes } from '../utils/api';
-import Loading from './Loading';
+import Loading from './stateless/Loading';
 
 export default function PriceDownload(props){
     
@@ -71,15 +73,32 @@ export default function PriceDownload(props){
             
         }
       }
+      
+    const handleTextbox = (event) =>{
+        setTicker(event.target.value)
+    }
+
+    const inputConfig= {
+        "label": "Indentifier",
+        "labelLocation": "above",
+        "id": 'ticker-input',
+        "value": ticker,
+        "onChange": handleTextbox,
+    }
+
+    const checkBoxConfig = {
+        "title": "Source",
+        "label": "Yahoo Finance",
+        "id": "source-input",
+        "disabled": true,
+        "checked": true,
+    }
 
     return (
         <>        
             <form onSubmit = {handleSubmit}>
                 <fieldset>
-                    <div className='left-aligned-input'>
-                        <label htmlFor='identifier-input'> Indentifier:</label>
-                        <input id = 'identifier-input' type = "text" value = {ticker} onChange = {(event) => {setTicker(event.target.value)}}/>
-                    </div>
+                    <GreenTextBox fieldProps = {inputConfig}/>  
                     <div className='left-aligned-input'>
                         <label htmlFor='datefrom-input'> Date from:</label>
                         <DatePicker inputClass="custom-datepicker" className='custom-datepicker' value = {dateFrom} id ='datefrom-input' format="YYYY-MM-DD" onChange = {(newDate) =>{newDate? setDateFrom(newDate.toDate()): setDateFrom(null)}}/>
@@ -91,13 +110,7 @@ export default function PriceDownload(props){
                     </div>
                 </fieldset>
                 <fieldset className='py-2 pe-2 text-end'>
-                    <legend className='mb-0'>
-                        <strong >
-                            Source:
-                        </strong>
-                    </legend>
-                        {/* Checkbox styling is controlled by OS, will have to eventually replace by Material UI component */}
-                    <input type="checkbox" disabled= {true} checked = {true}/><label className='ps-2'> Yahoo Finance</label>
+                    <GreenCheckBox boxProps = {checkBoxConfig}/>
                 </fieldset>
 
                 <fieldset className='text-end pe-2'>

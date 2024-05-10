@@ -2,10 +2,12 @@
 import {useState,useEffect } from 'react'
 import { Link } from "react-router-dom"
 
-import GreenButton from './GreenButton';
+import GreenButton from './primitives/GreenButton';
+import GreenTextBox from './primitives/GreenTextBox';
+import GreenCheckBox from './primitives/GreenCheckBox';
 
 import {getIdentifierCodes,putInstrumentDownload } from '../utils/api';
-import Loading from './Loading';
+import Loading from './stateless/Loading';
 
 export default function InstrumentDownload(){
     
@@ -62,24 +64,36 @@ export default function InstrumentDownload(){
         }
       }
 
+      const handleTextbox = (event) => {
+        setTicker(event.target.value)
+      }
+
+    const inputConfig= {
+        "label": "Indentifier",
+        "labelLocation": "left",
+        "id": 'ticker-input',
+        "value": ticker,
+        "onChange": handleTextbox,
+    }
+
+    const checkBoxConfig = {
+        "title": "Source",
+        "label": "polygon.io",
+        "id": "source-input",
+        "disabled": true,
+        "checked": true,
+    }
+
 
     return (
         <>        
             <form onSubmit = {handleSubmit}>
                 <fieldset >
-                        <label htmlFor='identifier-input' className='pe-3'> Indentifier:</label>
-                        <input id = 'identifier-input' type = "text" value = {ticker} onChange = {(event) => {setTicker(event.target.value)}}/>                 
+                    <GreenTextBox fieldProps = {inputConfig}/>                 
                 </fieldset>
                 <fieldset className='py-2 pe-2 text-end'>
-                    <legend className='mb-0'>
-                        <strong >
-                            Source:
-                        </strong>
-                    </legend>
-                        {/* Checkbox styling is controlled by OS, will have to eventually replace by Material UI component */}
-                    <input type="checkbox" disabled= {true} checked = {true}/><label className='ps-2'> polygon.io</label>
+                    <GreenCheckBox boxProps = {checkBoxConfig}/>
                 </fieldset>
-
                 <fieldset className='text-end pe-2'>
                     <GreenButton text = "Download" btntype = "submit" isDisabled = {isLoading}/>
                 </fieldset>

@@ -1,7 +1,8 @@
 import {useEffect, useState } from 'react'
 
 import FieldListPage from './FieldListPage';
-import GreenButton from './GreenButton';
+import GreenButton from './primitives/GreenButton';
+import GreenTextBox from './primitives/GreenTextBox';
 
 import {getInstrumentByTicker} from '../utils/api'
 
@@ -31,15 +32,21 @@ export default function ViewFieldList(props){
         setTextbox(event.target.value)
     }
 
+    const fieldConfig= {
+        "label": labelText,
+        "labelLocation": "left",
+        "id": 'ticker-input',
+        "value": textbox,
+        "onChange": handleTextbox,
+    }
+
     return(
         <>
             <div className='d-flex flex-column'>
                 <div>
                     <form onSubmit = {handleSubmit}>        
                         <fieldset className='pb-5 text-center'>
-
-                            <label htmlFor='textbox-input' className='me-2'>{labelText}:</label>
-                            <input id = 'textbox-input' className='me-2' type = "text" value = {textbox} onChange = {handleTextbox}/>
+                            <GreenTextBox fieldProps = {fieldConfig}/>
                             <GreenButton text = "View" btntype = "submit" isDisabled = {isLoading}/>
                         </fieldset>                
                     </form>

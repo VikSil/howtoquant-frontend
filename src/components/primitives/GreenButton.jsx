@@ -1,4 +1,4 @@
-import '../assets/css/GreenButton.css'
+import '../../assets/css/GreenButton.css'
 
 export default function GreenButton(props){
     const {clickFunction, text, isDisabled, id, btntype} = props

@@ -2,7 +2,7 @@ import {useState } from 'react'
 
 import NavSection from './NavSection'
 
-import '../assets/css/NavPane.css'
+import '../../assets/css/NavPane.css'
 
 export default function NavPane(props){
     
