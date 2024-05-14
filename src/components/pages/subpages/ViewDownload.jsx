@@ -1,10 +1,10 @@
 import {useState,useEffect } from 'react'
-import GreenButton from './primitives/GreenButton';
-import TableContainer from './containers/TableContainer'
-import GreenTextBox from './primitives/GreenTextBox';
-import GreenRadioButtons from './primitives/GreenRadioButtons';
+import GreenButton from '../../primitives/GreenButton';
+import TableContainer from '../../containers/TableContainer'
+import GreenTextBox from '../../primitives/GreenTextBox';
+import GreenRadioButtons from '../../primitives/GreenRadioButtons';
 
-import {getPriceDownload, putSavePriceDownload} from '../utils/api';
+import {getPriceDownload, putSavePriceDownload} from '../../../utils/api';
 
 export default function ViewDownload(props){
 

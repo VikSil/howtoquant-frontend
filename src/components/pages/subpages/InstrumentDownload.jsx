@@ -2,12 +2,12 @@
 import {useState,useEffect } from 'react'
 import { Link } from "react-router-dom"
 
-import GreenButton from './primitives/GreenButton';
-import GreenTextBox from './primitives/GreenTextBox';
-import GreenCheckBox from './primitives/GreenCheckBox';
+import GreenButton from '../../primitives/GreenButton';
+import GreenTextBox from '../../primitives/GreenTextBox';
+import GreenCheckBox from '../../primitives/GreenCheckBox';
 
-import {getIdentifierCodes,putInstrumentDownload } from '../utils/api';
-import Loading from './stateless/Loading';
+import {getIdentifierCodes,putInstrumentDownload } from '../../../utils/api';
+import Loading from '../../stateless/Loading';
 
 export default function InstrumentDownload(){
     

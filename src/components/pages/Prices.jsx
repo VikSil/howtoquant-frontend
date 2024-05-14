@@ -1,8 +1,8 @@
 import {useEffect, useState } from 'react'
 
 import GreenButton from '../primitives/GreenButton';
-import PriceDownload from '../PriceDownload';
-import ViewDownload from '../ViewDownload';
+import PriceDownload from './subpages/PriceDownload';
+import ViewDownload from './subpages/ViewDownload';
 import TableContainer from '../containers/TableContainer'
 
 import {getPrices} from '../../utils/api';

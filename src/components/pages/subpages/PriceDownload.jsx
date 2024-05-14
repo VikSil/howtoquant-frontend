@@ -3,12 +3,12 @@ import {useState,useEffect } from 'react'
 
 import DatePicker from "react-multi-date-picker"
 
-import GreenButton from './primitives/GreenButton';
-import GreenTextBox from './primitives/GreenTextBox';
-import GreenCheckBox from './primitives/GreenCheckBox';
+import GreenButton from '../../primitives/GreenButton';
+import GreenTextBox from '../../primitives/GreenTextBox';
+import GreenCheckBox from '../../primitives/GreenCheckBox';
 
-import {putPriceDownload, getIdentifierCodes } from '../utils/api';
-import Loading from './stateless/Loading';
+import {putPriceDownload, getIdentifierCodes } from '../../../utils/api';
+import Loading from '../../stateless/Loading';
 
 export default function PriceDownload(props){
     
