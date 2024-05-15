@@ -1,12 +1,12 @@
 
-import {useState,useEffect } from 'react'
+import { useState,useEffect } from 'react'
 import { Link } from "react-router-dom"
 
 import GreenButton from '../../primitives/GreenButton';
 import GreenTextBox from '../../primitives/GreenTextBox';
 import GreenCheckBox from '../../primitives/GreenCheckBox';
 
-import {getIdentifierCodes,putInstrumentDownload } from '../../../utils/api';
+import { getIdentifierCodes,putInstrumentDownload } from '../../../utils/api';
 import Loading from '../../stateless/Loading';
 
 export default function InstrumentDownload(){
@@ -68,31 +68,15 @@ export default function InstrumentDownload(){
         setTicker(event.target.value)
       }
 
-    const inputConfig= {
-        "label": "Indentifier",
-        "labelLocation": "left",
-        "id": 'ticker-input',
-        "value": ticker,
-        "onChange": handleTextbox,
-    }
-
-    const checkBoxConfig = {
-        "title": "Source",
-        "label": "polygon.io",
-        "id": "source-input",
-        "disabled": true,
-        "checked": true,
-    }
-
 
     return (
         <>        
             <form onSubmit = {handleSubmit}>
                 <fieldset >
-                    <GreenTextBox fieldProps = {inputConfig}/>                 
+                    <GreenTextBox text = "Indentifier" labelLocation= "left" id="ticker-input" value = {ticker} onChange = {handleTextbox}/>                 
                 </fieldset>
                 <fieldset className='py-2 pe-2 text-end'>
-                    <GreenCheckBox boxProps = {checkBoxConfig}/>
+                    <GreenCheckBox title = "Source" text = "polygon.io" id = "source-input" disabled = {true} checked = {true}/>
                 </fieldset>
                 <fieldset className='text-end pe-2'>
                     <GreenButton text = "Download" btntype = "submit" isDisabled = {isLoading}/>
@@ -106,7 +90,7 @@ export default function InstrumentDownload(){
                         <p className='mb-0 mt-3 align-content-center'>Ticker already exists in the database</p>
                    </div>
                     <div className= "pt-2 pe-2 d-flex justify-content-between">
-                        <Link className = 'px0' to={`/equities?subpage=viewTicker&downloadId=${ticker}`}>
+                        <Link className = 'px0' to={`/equities?subpage=viewTicker&ticker=${ticker}`}>
                             <GreenButton text = "View Existing" />
                         </Link>
                         <GreenButton text = "New Override" isDisabled = {isLoading} clickFunction={triggerDownload}/>
@@ -116,7 +100,7 @@ export default function InstrumentDownload(){
                    {instId && 
                    <div className= "top-split mt-3 pt-2 pe-2 d-flex justify-content-between">
                         <p className='mb-0 align-content-center'>Instrument downloaded</p>
-                        <Link className = 'px0' to={`/equities?subpage=viewTicker&downloadId=${ticker}`}>
+                        <Link className = 'px0' to={`/equities?subpage=viewTicker&ticker=${ticker}`}>
                             <GreenButton text = "View"/>
                         </Link>
                    </div>}

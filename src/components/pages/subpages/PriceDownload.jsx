@@ -1,5 +1,5 @@
 
-import {useState,useEffect } from 'react'
+import { useState,useEffect } from 'react'
 
 import DatePicker from "react-multi-date-picker"
 
@@ -7,7 +7,7 @@ import GreenButton from '../../primitives/GreenButton';
 import GreenTextBox from '../../primitives/GreenTextBox';
 import GreenCheckBox from '../../primitives/GreenCheckBox';
 
-import {putPriceDownload, getIdentifierCodes } from '../../../utils/api';
+import { putPriceDownload, getIdentifierCodes } from '../../../utils/api';
 import Loading from '../../stateless/Loading';
 
 export default function PriceDownload(props){
@@ -78,27 +78,12 @@ export default function PriceDownload(props){
         setTicker(event.target.value)
     }
 
-    const inputConfig= {
-        "label": "Indentifier",
-        "labelLocation": "above",
-        "id": 'ticker-input',
-        "value": ticker,
-        "onChange": handleTextbox,
-    }
-
-    const checkBoxConfig = {
-        "title": "Source",
-        "label": "Yahoo Finance",
-        "id": "source-input",
-        "disabled": true,
-        "checked": true,
-    }
 
     return (
         <>        
             <form onSubmit = {handleSubmit}>
                 <fieldset>
-                    <GreenTextBox fieldProps = {inputConfig}/>  
+                    <GreenTextBox text =  "Indentifier" labelLocation = "above" id = "ticker-input" value = {ticker} onChange = {handleTextbox}/>  
                     <div className='left-aligned-input'>
                         <label htmlFor='datefrom-input'> Date from:</label>
                         <DatePicker inputClass="custom-datepicker" className='custom-datepicker' value = {dateFrom} id ='datefrom-input' format="YYYY-MM-DD" onChange = {(newDate) =>{newDate? setDateFrom(newDate.toDate()): setDateFrom(null)}}/>
@@ -110,7 +95,7 @@ export default function PriceDownload(props){
                     </div>
                 </fieldset>
                 <fieldset className='py-2 pe-2 text-end'>
-                    <GreenCheckBox boxProps = {checkBoxConfig}/>
+                    <GreenCheckBox title = "Source" text = "Yahoo Finance" id = "source-input" disabled = {true} checked ={true}/>
                 </fieldset>
 
                 <fieldset className='text-end pe-2'>

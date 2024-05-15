@@ -2,45 +2,45 @@ import {useState} from 'react'
 
 export default function GreenTextBox(props){
 
-    const {fieldProps}= props
+    const {text, labelLocation, id, readOnly, defaultValue, value, length, onChange}= props
 
     /*
-    fieldProps = {
-        "label" : "str - label text",
-        "labelLocation" : "str - possible values: left, left-apart, above",
-        "id" : "str - id of the textbox",
-        "readOnly" : "bool - weather the textbox is read only or not - optional, defaults to false",
-        "defaultValue" : "str - default value of the text box - optional",
-        "value" : "str - current value of the textbox - optional",
-        "length" : "int - length of the text box - optional, defaults to 20",
-        "onChange" : "callback function - optional"
-    }
-    
+    PROPS
+
+    "text" : str - label text,
+    "labelLocation" : str - possible values: left, left-apart, above,
+    "id" : str - id of the textbox,
+    "readOnly" : bool - whether the textbox is read only or not - optional, defaults to false,
+    "defaultValue" : str - default value of the text box - optional,
+    "value" : str - current value of the textbox - optional,
+    "length" : int - length of the text box - optional, defaults to 20,
+    "onChange" : callback function - optional
+
     */
 
-    const [fieldState, setFieldState] = useState(fieldProps.readOnly)
-
+    const [fieldState, setFieldState] = useState(readOnly)
 
     return (
         <>
-        {fieldProps.labelLocation === "left-apart"?
+        
+        {labelLocation === "left-apart"?
             <div className='row py-2'>
                 <div className='col text-end'>
-                    <label htmlFor={`${fieldProps.id.toLowerCase().replace(' ','-')}-input`} className='me-2'> {(fieldProps.label[0].toUpperCase()+fieldProps.label.substring(1)).replace("_", " ")}:</label>                                        
+                    <label htmlFor={`${id.toLowerCase().replace(' ','-')}-input`} className='me-2'> {(text[0].toUpperCase()+text.substring(1)).replace("_", " ")}:</label>                                        
                 </div>
                 <div className='col text-start'>
-                    <input id = {`${fieldProps.id.toLowerCase().replace(' ','-')}-input`} className='me-2' type = "text" defaultValue = {fieldProps.defaultValue} value = {fieldProps.value} readOnly ={fieldState}  onChange = {fieldProps.onChange}/>
+                    <input id = {`${id.toLowerCase().replace(' ','-')}-input`} className='me-2' type = "text" defaultValue = {defaultValue} value = {value} readOnly ={fieldState}  onChange = {onChange}/>
                 </div>
             </div>
-        : fieldProps.labelLocation === "left"?
+        : labelLocation === "left"?
             <>
-                <label htmlFor={`${fieldProps.id.toLowerCase().replace(' ','-')}-input`} className='me-2'> {(fieldProps.label[0].toUpperCase()+fieldProps.label.substring(1)).replace("_", " ")}:</label> 
-                <input id = {`${fieldProps.id.toLowerCase().replace(' ','-')}-input`} className='me-2' type = "text" defaultValue = {fieldProps.defaultValue} value = {fieldProps.value} readOnly ={fieldState}  onChange = {fieldProps.onChange}/>
+                <label htmlFor={`${id.toLowerCase().replace(' ','-')}-input`} className='me-2'> {(text[0].toUpperCase()+text.substring(1)).replace("_", " ")}:</label> 
+                <input id = {`${id.toLowerCase().replace(' ','-')}-input`} className='me-2' type = "text" defaultValue = {defaultValue} value = {value} readOnly ={fieldState}  onChange = {onChange}/>
             </>
-        : fieldProps.labelLocation === "above"?
+        : labelLocation === "above"?
             <div className='left-aligned-input'>
-                <label htmlFor={`${fieldProps.id.toLowerCase().replace(' ','-')}-input`}> {(fieldProps.label[0].toUpperCase()+fieldProps.label.substring(1)).replace("_", " ")}:</label>
-                <input id = {`${fieldProps.id.toLowerCase().replace(' ','-')}-input`}  type = "text" value ={fieldProps.value} onChange = {fieldProps.onChange}/>
+                <label htmlFor={`${id.toLowerCase().replace(' ','-')}-input`}> {(text[0].toUpperCase()+text.substring(1)).replace("_", " ")}:</label>
+                <input id = {`${id.toLowerCase().replace(' ','-')}-input`}  type = "text" value ={value} onChange = {onChange}/>
             </div>
         : null 
         }

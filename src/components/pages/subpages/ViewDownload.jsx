@@ -59,28 +59,20 @@ export default function ViewDownload(props){
         setSaveType(event.target.value)
     }
 
-    const inputConfig= {
-        "label": "Download Id",
-        "labelLocation": "left",
-        "id": 'downloadid-input',
-        "value": textbox,
-        "onChange": handleTextbox,
-    }
 
     const radioBtnConfig = {
         "name": "save-type",
+        "onChange": handleRadioBtn,
         "buttons" : [{
             "id":"save-missing",
             "value": "missing",
             "checked": saveType==="missing"?true:false,
-            "onChange": handleRadioBtn,
             "label": "Save Missing Only",
         },
         {
             "id":"save-overrideall",
             "value": "overrideall",
-            "checked": saveType==="overrideall"?true:false,
-            "onChange": handleRadioBtn,
+            "checked": saveType==="overrideall"?true:false,            
             "label": "Save All and Override",
         }]
     }
@@ -91,7 +83,7 @@ export default function ViewDownload(props){
                 <div>
                     <form onSubmit = {handleDownloadRequest}>        
                         <fieldset className='pb-5 text-center'>
-                            <GreenTextBox fieldProps = {inputConfig}/>
+                            <GreenTextBox text = "Download Id" labelLocation = "left" id = "downloadid-input" value = {textbox} onChange = {handleTextbox} />
                             <GreenButton text = "View" btntype = "submit" isDisabled = {isLoading}/>
                         </fieldset>                
                     </form>
@@ -100,7 +92,7 @@ export default function ViewDownload(props){
                 {!isLoading && !isLoadingError && downloadId && <div>
                     <form onSubmit = {handlePriceSave}> 
                         <fieldset className='pt-4 pb-2 text-end'>
-                            <GreenRadioButtons boxProps = {radioBtnConfig}/>
+                            <GreenRadioButtons radioProps = {radioBtnConfig}/>
                         </fieldset>
                         <fieldset className='text-end'>
                             <GreenButton text = "Save" btntype = "submit" isDisabled = {isSaving}/>

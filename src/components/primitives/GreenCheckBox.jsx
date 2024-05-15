@@ -1,31 +1,27 @@
-import {useState} from 'react'
-
 export default function GreenCheckBox(props){
 
-    const {boxProps}= props
+    const {title, text,  id, disabled, checked}= props
 
     /*
-    fieldProps = {
-        "title" : "str - title above the checkbox",
-        "label" : "str - label to the right of the checkbox",
-        "id" : "str - id of the textbox",
-        "disabled" : "bool - weather the checkbox is read only or not - optional, defaults to false",
-        "checked" : "bool - weather the checkbox is checked or not - optional, defaults to false",
-        "onChange" : "callback function - optional",
-    }    
-    */
+    PROPS
 
-    const [fieldState, setFieldState] = useState(boxProps.readOnly)
+    "title" : str - title above the checkbox,
+    "text" : str - label to the right of the checkbox,
+    "id" : str - id of the textbox,
+    "disabled" : bool - whether the checkbox is read only or not - optional, defaults to false,
+    "checked" : bool - whether the checkbox is checked or not - optional, defaults to false,
+    
+    */
 
 
     return (
         <>
             <legend className='mb-0'>
                 <strong >
-                    {boxProps.title}:
+                    {title}:
                 </strong>
             </legend>
                 {/* Checkbox styling is controlled by OS, will have to eventually replace by Material UI component */}
-            <input type="checkbox" disabled= {boxProps.disabled} checked = {boxProps.checked}/><label className='ps-2'>{boxProps.label}</label>
+            <input type="checkbox" id = {id} disabled= {disabled} defaultChecked = {checked}/><label className='ps-2'>{text}</label>
         </>)
 }
