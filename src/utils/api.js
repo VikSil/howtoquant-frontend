@@ -29,7 +29,7 @@ export const getIdentifierTypes = () => {
   };
 
   export const getAllEquities = () => {
-    let URL = APIroot+"staticdata/api/equities/all";
+    let URL = APIroot+"staticdata/api/equities";
 
     return axios
       .get(URL)
@@ -42,7 +42,7 @@ export const getIdentifierTypes = () => {
   };
 
   export const getAllIdentifiers = () => {
-    let URL = APIroot+"staticdata/api/identifiers/all";
+    let URL = APIroot+"staticdata/api/identifiers";
 
     return axios
       .get(URL)
@@ -55,7 +55,7 @@ export const getIdentifierTypes = () => {
   };
 
   export const getInstrumentByTicker = (ticker) => {
-    let URL = APIroot+"staticdata/api/instruments/"+ticker;
+    let URL = APIroot+"staticdata/api/equities/"+ticker;
     return axios
       .get(URL)
       .then((response) => {
