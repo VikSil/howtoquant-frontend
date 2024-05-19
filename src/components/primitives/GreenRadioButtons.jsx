@@ -21,7 +21,7 @@ export default function GreenRadioButtons(props){
             {radioProps.buttons.map((button) => {
                 return (
                     <>
-                        <input type="radio" name= {radioProps.name} id = {`${button.id}-radio`} value = {button.value} checked = {button.checked} onChange={button.onChange}/><label htmlFor = {`${button.id}-radio`} className='py-1 ps-1'>{button.label}</label>
+                        <input type="radio" name= {radioProps.name} id = {`${button.id}-radio`} value = {button.value} checked = {button.checked} onChange={radioProps.onChange}/><label htmlFor = {`${button.id}-radio`} className='py-1 ps-1'>{button.label}</label>
                         <br></br>
                     </>
                 )
