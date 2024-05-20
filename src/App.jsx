@@ -17,7 +17,7 @@ import PBAccount from './components/pages/PBAccounts';
 import MainArea from './components/pages/MainArea';
 import TableContainer from './components/containers/TableContainer';
 
-import { getAllIdentifiers } from './utils/api';
+import { getGenericRequest } from './utils/api';
 import Loading from './components/stateless/Loading';
 
 function App() {
@@ -80,7 +80,8 @@ function App() {
                 <section className='d-flex flex-column flex-fill p-5'>
                   <TableContainer
                     title={'All Identifiers'}
-                    fetchFunction={getAllIdentifiers}
+                    fetchFunction={getGenericRequest}
+                    fetchParams={'identifiers'}
                     fetchKey={'identifiers'}
                   />
                 </section>

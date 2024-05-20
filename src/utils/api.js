@@ -5,62 +5,15 @@ const paths = {
   'books': 'accounting/api/books',
   'strategies': 'accounting/api/strategies',
   'pbaccounts': 'accounting/api/pbaccounts',
+  'identifierTypes': 'staticdata/api/identifier_types',
+  'identifierCodes': 'staticdata/api/identifiers/codes',
+  'equities': 'staticdata/api/equities',
+  'identifiers': 'staticdata/api/identifiers',
+  'prices': 'marketdata/api/prices',
 };
 
 export const getGenericRequest = (path) => {
   let URL = APIroot + paths[path];
-
-  return axios
-    .get(URL)
-    .then((response) => {
-      return response.data.data;
-    })
-    .catch((error) => {
-      throw error;
-    });
-};
-
-export const getIdentifierTypes = () => {
-  let URL = APIroot + 'staticdata/api/identifier_types';
-
-  return axios
-    .get(URL)
-    .then((response) => {
-      return response.data.data;
-    })
-    .catch((error) => {
-      throw error;
-    });
-};
-
-export const getIdentifierCodes = () => {
-  let URL = APIroot + 'staticdata/api/identifiers/codes';
-
-  return axios
-    .get(URL)
-    .then((response) => {
-      return response.data.data;
-    })
-    .catch((error) => {
-      throw error;
-    });
-};
-
-export const getAllEquities = () => {
-  let URL = APIroot + 'staticdata/api/equities';
-
-  return axios
-    .get(URL)
-    .then((response) => {
-      return response.data.data;
-    })
-    .catch((error) => {
-      throw error;
-    });
-};
-
-export const getAllIdentifiers = () => {
-  let URL = APIroot + 'staticdata/api/identifiers';
 
   return axios
     .get(URL)

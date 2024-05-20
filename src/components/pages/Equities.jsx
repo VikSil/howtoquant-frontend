@@ -5,7 +5,7 @@ import GreenButton from '../primitives/GreenButton';
 import TableContainer from '../containers/TableContainer';
 import ViewEquity from './subpages/ViewEquity';
 
-import { getAllEquities } from '../../utils/api';
+import { getGenericRequest } from '../../utils/api';
 
 export default function Equities() {
   const [searchParams] = useSearchParams();
@@ -35,7 +35,8 @@ export default function Equities() {
         {subpage === 'viewEquities' ? (
           <TableContainer
             title={'All Equities'}
-            fetchFunction={getAllEquities}
+            fetchFunction={getGenericRequest}
+            fetchParams={'equities'}
             fetchKey={'equities'}
           />
         ) : subpage === 'viewTicker' ? (
