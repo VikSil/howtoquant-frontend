@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 export default function GreenTextBox(props){
 
-    const {text, labelLocation, id, readOnly, defaultValue, value, length, onChange}= props
+    const {text, labelLocation, id, readOnly, defaultValue, value = '', length, onChange}= props
 
     /*
     PROPS

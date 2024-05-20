@@ -36,7 +36,7 @@ export default function NavSection(props){
 
                                 return (
                                     <Link to ={subsection} className="undecorated-link" key = {index}>
-                                        <p >{subsection}</p>
+                                        <p>{subsection}</p>
                                     </Link>)})
                             }
                         </div>                    

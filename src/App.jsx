@@ -9,6 +9,10 @@ import NavPane from './components/layout/NavPane';
 import NewInstrument from './components/pages/NewInstrument';
 import Prices from './components/pages/Prices';
 import Equities from './components/pages/Equities';
+import Funds from './components/pages/Funds';
+import Books from './components/pages/Books';
+import Strategies from './components/pages/Strategies';
+import PBAccount from './components/pages/PBAccounts';
 
 import MainArea from './components/pages/MainArea';
 import TableContainer from './components/containers/TableContainer';
@@ -23,6 +27,7 @@ function App() {
   const [categories, setCategories] = useState([
     { 'instruments': ['equities', 'new instrument'] },
     { 'market data': ['identifiers', 'prices'] },
+    { 'organizations': ['funds', 'books', 'strategies', 'PB accounts'] },
     { 'Test': ['test'] },
   ]);
 
@@ -81,6 +86,18 @@ function App() {
                 </section>
               }
             />
+          )}
+          {routes.includes('funds') && (
+            <Route path='/funds' element={<Funds />} />
+          )}
+          {routes.includes('books') && (
+            <Route path='/books' element={<Books />} />
+          )}
+          {routes.includes('strategies') && (
+            <Route path='/strategies' element={<Strategies />} />
+          )}
+          {routes.includes('PB accounts') && (
+            <Route path='/pb accounts' element={<PBAccount />} />
           )}
           {routes.includes('prices') && (
             <Route path='/prices' element={<Prices />} />
