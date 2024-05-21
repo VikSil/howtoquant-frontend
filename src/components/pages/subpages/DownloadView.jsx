@@ -49,10 +49,6 @@ export default function DownloadView(props) {
       });
   };
 
-  const handleTextbox = (event) => {
-    setTextbox(event.target.value);
-  };
-
   const handleRadioBtn = (event) => {
     setSaveType(event.target.value);
   };
@@ -87,7 +83,7 @@ export default function DownloadView(props) {
                 labelLocation='left'
                 id='downloadid-input'
                 value={textbox}
-                onChange={handleTextbox}
+                onChange={setTextbox}
               />
               <GreenButton
                 text='View'

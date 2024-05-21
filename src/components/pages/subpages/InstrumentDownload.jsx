@@ -59,10 +59,6 @@ export default function InstrumentDownload() {
     }
   };
 
-  const handleTextbox = (event) => {
-    setTicker(event.target.value);
-  };
-
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -72,7 +68,7 @@ export default function InstrumentDownload() {
             labelLocation='left'
             id='ticker-input'
             value={ticker}
-            onChange={handleTextbox}
+            onChange={setTicker}
           />
         </fieldset>
         <fieldset className='py-2 pe-2 text-end'>

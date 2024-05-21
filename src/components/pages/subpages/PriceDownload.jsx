@@ -68,10 +68,6 @@ export default function PriceDownload(props) {
     }
   };
 
-  const handleTextbox = (event) => {
-    setTicker(event.target.value);
-  };
-
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -81,7 +77,7 @@ export default function PriceDownload(props) {
             labelLocation='above'
             id='ticker-input'
             value={ticker}
-            onChange={handleTextbox}
+            onChange={setTicker}
           />
           <div className='left-aligned-input'>
             <label htmlFor='datefrom-input'> Date from:</label>

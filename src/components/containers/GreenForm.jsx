@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import GreenButton from '../primitives/GreenButton';
 import GreenTextBox from '../primitives/GreenTextBox';
 import GreenCheckBox from '../primitives/GreenCheckBox';
@@ -15,10 +17,31 @@ export default function GreenForm(props) {
         ]
     */
 
+  const [unfilledFieldsErr, setUnfilledFieldsErr] = useState(false);
+
+  const submitFunction = (event) => {
+    event.preventDefault();
+    // Check if any of the mandatory fields are left empty
+    const emptyFields = formList.filter(
+      (element) =>
+        element.props.mandatory === true && element.props.value.length === 0
+    );
+    if (emptyFields.length > 0) {
+      // if there are empty mandatory fields
+      setUnfilledFieldsErr('Please fill out all mandatory fields');
+    } else {
+      // if all mandatory fields are filled - do whatever the form does
+      setUnfilledFieldsErr('');
+      if (typeof onSubmit !== 'undefined') {
+        onSubmit();
+      }
+    }
+  };
+
   return (
     <div className='d-flex flex-column'>
       <h3>{formTitle}</h3>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={submitFunction}>
         {formList.map((value, index) => {
           let element = '';
           value.type == 'button'
@@ -59,7 +82,6 @@ export default function GreenForm(props) {
                     labelLocation={value.props.labelLocation}
                     id={value.props.id}
                     readOnly={value.props.readOnly}
-                    defaultValue={value.props.defaultValue}
                     value={value.props.value}
                     length={value.props.length}
                     onChange={value.props.onChange}
@@ -75,6 +97,9 @@ export default function GreenForm(props) {
           return element;
         })}
       </form>
+      {unfilledFieldsErr && (
+        <p className='error-class text-end pe-2 py-2'>{unfilledFieldsErr}</p>
+      )}
     </div>
   );
 }

@@ -28,10 +28,6 @@ export default function EquityView(props) {
     }
   };
 
-  const handleTextbox = (event) => {
-    setTextbox(event.target.value);
-  };
-
   const processRequest = () => {
     setInstData(null);
     setError(null);
@@ -74,7 +70,7 @@ export default function EquityView(props) {
                 labelLocation='left'
                 id='ticker-input'
                 value={textbox}
-                onChange={handleTextbox}
+                onChange={setTextbox}
               />
               <GreenButton
                 text='View'

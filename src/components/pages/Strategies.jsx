@@ -3,13 +3,53 @@ import { useSearchParams } from 'react-router-dom';
 
 import GreenButton from '../primitives/GreenButton';
 import TableContainer from '../containers/TableContainer';
-import StrategyAdd from './subpages/StrategyAdd';
+import GreenForm from '../containers/GreenForm';
 
 import { getGenericRequest } from '../../utils/api';
+import { postStrategies } from '../../utils/api_post';
 
 export default function Strategies() {
   const [searchParams] = useSearchParams();
   const [subpage, setSubPage] = useState(searchParams.get('subpage'));
+
+  const [strategyName, setStrategyName] = useState('');
+  const [strategyDescr, setStrategyDescr] = useState('');
+
+  const submitStrategyData = () => {
+    postStrategies(strategyName, strategyDescr);
+  };
+
+  const strategyData = [
+    {
+      'type': 'textbox',
+      'props': {
+        'text': 'Strategy Name',
+        'labelLocation': 'left-apart',
+        'id': 'strategy-name-input',
+        'mandatory': true,
+        'value': strategyName,
+        'onChange': setStrategyName,
+      },
+    },
+    {
+      'type': 'textbox',
+      'props': {
+        'text': 'Strategy Description',
+        'labelLocation': 'left-apart',
+        'id': 'strategy-description-input',
+        'value': strategyDescr,
+        'onChange': setStrategyDescr,
+      },
+    },
+    {
+      'type': 'button',
+      'props': {
+        'text': 'Save',
+        'id': 'strategy-save-btn',
+        'btntype': 'submit',
+      },
+    },
+  ];
 
   return (
     <main className='d-flex flex-column flex-fill p-5'>
@@ -37,7 +77,11 @@ export default function Strategies() {
             fetchKey={'strategies'}
           />
         ) : subpage === 'newStrategy' ? (
-          <StrategyAdd />
+          <GreenForm
+            formTitle={'New Strategy'}
+            formList={strategyData}
+            onSubmit={submitStrategyData}
+          />
         ) : null}
       </section>
     </main>
