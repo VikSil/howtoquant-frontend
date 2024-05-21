@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 
 import GreenButton from '../primitives/GreenButton';
 import TableContainer from '../containers/TableContainer';
-import ViewEquity from './subpages/ViewEquity';
+import EquityView from './subpages/EquityView';
 
 import { getGenericRequest } from '../../utils/api';
 
@@ -40,7 +40,7 @@ export default function Equities() {
             fetchKey={'equities'}
           />
         ) : subpage === 'viewTicker' ? (
-          <ViewEquity
+          <EquityView
             labelText={'Ticker'}
             contentTitle={'Instrument details'}
             initTicker={searchParams.get('ticker')}

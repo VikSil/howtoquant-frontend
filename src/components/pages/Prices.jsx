@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import GreenButton from '../primitives/GreenButton';
 import PriceDownload from './subpages/PriceDownload';
-import ViewDownload from './subpages/ViewDownload';
+import DownloadView from './subpages/DownloadView';
 import TableContainer from '../containers/TableContainer';
 
 import { getGenericRequest } from '../../utils/api';
@@ -54,7 +54,7 @@ export default function Prices() {
         ) : subpage === 'newDownload' ? (
           <PriceDownload callbackFunc={returnPrices} />
         ) : subpage === 'viewDownload' ? (
-          <ViewDownload
+          <DownloadView
             initDownloadId={downloadId}
             initIsLoading={showDownload}
           />

@@ -9,7 +9,7 @@ import Error from '../../stateless/Error';
 
 import { getInstrumentByTicker } from '../../../utils/api';
 
-export default function ViewEquity(props) {
+export default function EquityView(props) {
   const { contentTitle, initTicker, labelText } = props;
 
   const [textbox, setTextbox] = useState(initTicker);
@@ -24,7 +24,7 @@ export default function ViewEquity(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (textbox.length > 0) {
-      processRequest()
+      processRequest();
     }
   };
 
@@ -32,7 +32,7 @@ export default function ViewEquity(props) {
     setTextbox(event.target.value);
   };
 
-  const processRequest = () =>{
+  const processRequest = () => {
     setInstData(null);
     setError(null);
     setIsLoading(true);
@@ -61,7 +61,7 @@ export default function ViewEquity(props) {
       .finally(() => {
         setIsLoading(false);
       });
-  }
+  };
 
   return (
     <>
