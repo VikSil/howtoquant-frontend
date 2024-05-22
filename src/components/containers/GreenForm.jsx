@@ -6,7 +6,7 @@ import GreenCheckBox from '../primitives/GreenCheckBox';
 import GreenRadioButtons from '../primitives/GreenRadioButtons';
 
 export default function GreenForm(props) {
-  const { formTitle, onSubmit, formList } = props;
+  const { formTitle, onSubmit, formList, submitResult } = props;
 
   /*
         formList = [
@@ -18,6 +18,7 @@ export default function GreenForm(props) {
     */
 
   const [unfilledFieldsErr, setUnfilledFieldsErr] = useState(false);
+
 
   const submitFunction = (event) => {
     event.preventDefault();
@@ -97,6 +98,9 @@ export default function GreenForm(props) {
           return element;
         })}
       </form>
+      {submitResult && (
+                  <p className='text-end pe-2 py-2'>{submitResult}</p>
+                )}
       {unfilledFieldsErr && (
         <p className='error-class text-end pe-2 py-2'>{unfilledFieldsErr}</p>
       )}

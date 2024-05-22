@@ -14,16 +14,27 @@ export default function Strategies() {
 
   const [strategyName, setStrategyName] = useState('');
   const [strategyDescr, setStrategyDescr] = useState('');
+  const [postResponse, setPostResponse] = useState('');
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   const submitStrategyData = () => {
-    postStrategies(strategyName, strategyDescr);
+    setButtonDisabled(true);
+    postStrategies(strategyName, strategyDescr)
+    .then((data) => {
+      setPostResponse(data.status);
+      setButtonDisabled(false);
+    })
+    .catch((error) => {
+      setPostResponse(error);
+    });
+    
   };
 
   const strategyData = [
     {
       'type': 'textbox',
       'props': {
-        'text': 'Strategy Name',
+        'text': 'Name',
         'labelLocation': 'left-apart',
         'id': 'strategy-name-input',
         'mandatory': true,
@@ -34,7 +45,7 @@ export default function Strategies() {
     {
       'type': 'textbox',
       'props': {
-        'text': 'Strategy Description',
+        'text': 'Description',
         'labelLocation': 'left-apart',
         'id': 'strategy-description-input',
         'value': strategyDescr,
@@ -47,6 +58,7 @@ export default function Strategies() {
         'text': 'Save',
         'id': 'strategy-save-btn',
         'btntype': 'submit',
+        'isDisabled': buttonDisabled,
       },
     },
   ];
@@ -59,6 +71,9 @@ export default function Strategies() {
           text={'View All'}
           clickFunction={() => {
             setSubPage('viewStrategies');
+            setStrategyName('');
+            setStrategyDescr('');
+            setPostResponse('');
           }}
         />
         <GreenButton
@@ -81,6 +96,7 @@ export default function Strategies() {
             formTitle={'New Strategy'}
             formList={strategyData}
             onSubmit={submitStrategyData}
+            submitResult ={postResponse}
           />
         ) : null}
       </section>

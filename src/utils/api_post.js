@@ -12,7 +12,7 @@ export const postStrategies = (name, description) => {
     return axios
       .post(URL, body)
       .then((response) => {
-        return response.data.data;
+        return response.data;
       })
       .catch((error) => {
         throw error;
