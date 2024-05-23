@@ -6,7 +6,8 @@ import GreenButton from '../../primitives/GreenButton';
 import GreenTextBox from '../../primitives/GreenTextBox';
 import GreenCheckBox from '../../primitives/GreenCheckBox';
 
-import { putPriceDownload, getGenericRequest } from '../../../utils/api';
+import { getGenericRequest } from '../../../utils/api_get';
+import { putPriceDownload } from '../../../utils/api_put';
 import Loading from '../../stateless/Loading';
 
 export default function PriceDownload(props) {

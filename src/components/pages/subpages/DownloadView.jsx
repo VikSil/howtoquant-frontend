@@ -4,7 +4,8 @@ import TableContainer from '../../containers/TableContainer';
 import GreenTextBox from '../../primitives/GreenTextBox';
 import GreenRadioButtons from '../../primitives/GreenRadioButtons';
 
-import { getPriceDownload, putSavePriceDownload } from '../../../utils/api';
+import { getPriceDownload } from '../../../utils/api_get';
+import { putSavePriceDownload } from '../../../utils/api_put';
 
 export default function DownloadView(props) {
   const { initDownloadId, initIsLoading = false } = props;

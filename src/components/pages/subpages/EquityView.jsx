@@ -7,7 +7,7 @@ import GreenForm from '../../containers/GreenForm';
 import Loading from '../../stateless/Loading';
 import Error from '../../stateless/Error';
 
-import { getInstrumentByTicker } from '../../../utils/api';
+import { getInstrumentByTicker } from '../../../utils/api_get';
 
 export default function EquityView(props) {
   const { contentTitle, initTicker, labelText } = props;

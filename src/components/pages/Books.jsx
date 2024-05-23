@@ -5,7 +5,7 @@ import GreenButton from '../primitives/GreenButton';
 import TableContainer from '../containers/TableContainer';
 import BookAdd from './subpages/BookAdd';
 
-import { getGenericRequest } from '../../utils/api';
+import { getGenericRequest } from '../../utils/api_get';
 
 export default function Books() {
   const [searchParams] = useSearchParams();

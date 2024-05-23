@@ -17,7 +17,7 @@ import PBAccount from './components/pages/PBAccounts';
 import MainArea from './components/pages/MainArea';
 import TableContainer from './components/containers/TableContainer';
 
-import { getGenericRequest } from './utils/api';
+import { getGenericRequest } from './utils/api_get';
 import Loading from './components/stateless/Loading';
 
 function App() {

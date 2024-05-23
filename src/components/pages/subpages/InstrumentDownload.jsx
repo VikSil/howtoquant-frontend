@@ -5,7 +5,8 @@ import GreenButton from '../../primitives/GreenButton';
 import GreenTextBox from '../../primitives/GreenTextBox';
 import GreenCheckBox from '../../primitives/GreenCheckBox';
 
-import { getGenericRequest, putInstrumentDownload } from '../../../utils/api';
+import { getGenericRequest } from '../../../utils/api_get';
+import { putInstrumentDownload } from '../../../utils/api_put';
 import Loading from '../../stateless/Loading';
 
 export default function InstrumentDownload() {

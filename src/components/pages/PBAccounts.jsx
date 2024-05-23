@@ -6,7 +6,7 @@ import TableContainer from '../containers/TableContainer';
 import AccountAdd from './subpages/AccountAdd';
 import BrokerAdd from './subpages/BrokerAdd';
 
-import { getGenericRequest, getOrganizations } from '../../utils/api';
+import { getGenericRequest, getOrganizations } from '../../utils/api_get';
 
 export default function PBAccount() {
   const [searchParams] = useSearchParams();

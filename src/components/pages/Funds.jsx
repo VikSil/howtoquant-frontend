@@ -5,7 +5,7 @@ import GreenButton from '../primitives/GreenButton';
 import TableContainer from '../containers/TableContainer';
 import FundAdd from './subpages/FundAdd';
 
-import { getOrganizations } from '../../utils/api';
+import { getOrganizations } from '../../utils/api_get';
 
 export default function Funds() {
   const [searchParams] = useSearchParams();

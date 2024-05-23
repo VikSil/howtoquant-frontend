@@ -5,7 +5,7 @@ import GreenButton from '../primitives/GreenButton';
 import TableContainer from '../containers/TableContainer';
 import GreenForm from '../containers/GreenForm';
 
-import { getGenericRequest } from '../../utils/api';
+import { getGenericRequest } from '../../utils/api_get';
 import { postStrategies } from '../../utils/api_post';
 
 export default function Strategies() {
