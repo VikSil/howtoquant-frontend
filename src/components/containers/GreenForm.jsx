@@ -83,6 +83,7 @@ export default function GreenForm(props) {
                     labelLocation={value.props.labelLocation}
                     id={value.props.id}
                     readOnly={value.props.readOnly}
+                    mandatory = {value.props.mandatory}
                     value={value.props.value}
                     length={value.props.length}
                     onChange={value.props.onChange}

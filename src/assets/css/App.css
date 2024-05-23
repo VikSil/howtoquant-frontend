@@ -121,6 +121,11 @@ input:-webkit-autofill:focus{
   padding-top: 5px;
 }
 
+.required:after {
+    content:" *";
+    color: red;
+  }
+
 ::placeholder {
     color:  rgba(85, 107, 47, 0.4);
 }

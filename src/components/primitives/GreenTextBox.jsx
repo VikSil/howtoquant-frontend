@@ -4,7 +4,7 @@ export default function GreenTextBox(props) {
     labelLocation,
     id,
     readOnly,
-    defaultValue,
+    mandatory,
     value = '',
     length,
     onChange,
@@ -37,7 +37,7 @@ export default function GreenTextBox(props) {
           <div className='col text-end'>
             <label
               htmlFor={`${id.toLowerCase().replace(' ', '-')}-input`}
-              className='me-2'
+              className={mandatory?'me-2 required':'me-2'}
             >
               {' '}
               {(text[0].toUpperCase() + text.substring(1)).replace('_', ' ')}:
