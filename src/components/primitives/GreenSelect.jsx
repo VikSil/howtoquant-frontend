@@ -1,10 +1,22 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react';
 
-export default function GreenSelect(props){
+export default function GreenSelect(props) {
+  const {
+    text,
+    labelLocation,
+    id,
+    options,
+    fetchFunction,
+    fetchKey,
+    fetchParams,
+    readOnly,
+    mandatory,
+    currentValue,
+    length,
+    onChange,
+  } = props;
 
-    const {text, labelLocation, id, options,fetchFunction, fetchKey , fetchParams, readOnly, mandatory, currentValue, length, onChange}= props
-
-    /*
+  /*
     PROPS
 
     "text" : str - label text,
@@ -22,52 +34,93 @@ export default function GreenSelect(props){
 
     */
 
-    const [content, setContent] = useState(['Retrieving options...'])
+  const [content, setContent] = useState(['', 'Retrieving options...']);
 
-    useEffect (() => {
-        if (fetchFunction) {
-            fetchFunction(fetchParams)
-            .then((data) => {
-                setContent(Array(' ').concat(data[fetchKey]));
-                //onChange('', '');
-            })
-            .catch((error)=>{
-                setContent(['An error occured'])
-            })
-        }
-        else {
-            setContent(options)
-        }
-    }, [])
+  useEffect(() => {
+    if (fetchFunction) {
+      fetchFunction(fetchParams)
+        .then((data) => {
+          setContent(Array(' ').concat(data[fetchKey]));
+          //onChange('', '');
+        })
+        .catch((error) => {
+          setContent(['An error occured']);
+        });
+    } else {
+      setContent(options);
+    }
+  }, []);
 
-    const handleSelect = (event) => {
-        if (typeof onChange !== 'undefined') {
-            onChange(event.target.value, event.target.options[event.target.selectedIndex].text);
-        }
-      };
+  const handleSelect = (event) => {
+    if (typeof onChange !== 'undefined') {
+      onChange(
+        event.target.value,
+        event.target.options[event.target.selectedIndex].text
+      );
+    }
+  };
 
-    return (
-        <>
-        
-        {labelLocation === "left-apart"?
-            <div className='row py-2'>
-                <div className='col text-end'>
-                    <label htmlFor={`${id.toLowerCase().replace(' ','-')}-select`} className={mandatory?'me-2 required':'me-2'}> {(text[0].toUpperCase()+text.substring(1)).replace("_", " ")}:</label>                                        
-                </div>
-                <div className='col text-start'>
-                    <select id = {`${id.toLowerCase().replace(' ','-')}-select`} className='me-2' value = {currentValue} onChange = {handleSelect}>
-                        {content.map((value, index) =>{return <option key = {index} value = {value.toLowerCase().replace(' ','-')} >{value}</option>})}
-                    </select>
-                </div>
-            </div>
-        : labelLocation === "above"?
-            <div className='left-aligned-input'>
-                <label htmlFor={`${id.toLowerCase().replace(' ','-')}-select` } className={mandatory?'required':''}> {(text[0].toUpperCase()+text.substring(1)).replace("_", " ")}:</label>
-                <select id = {`${id.toLowerCase().replace(' ','-')}-select`} className='me-2'  value = {currentValue} onChange = {handleSelect}>
-                        {content.map((value, index) =>{return <option key = {index} value = {value.toLowerCase().replace(' ','-')} >{value}</option>})}
-                </select>
-            </div>
-        : null 
-        }
-    </>)
+  return (
+    <>
+      {labelLocation === 'left-apart' ? (
+        <div className='row py-2'>
+          <div className='col text-end'>
+            <label
+              htmlFor={`${id.toLowerCase().replace(' ', '-')}-select`}
+              className={mandatory ? 'me-2 required' : 'me-2'}
+            >
+              {' '}
+              {(text[0].toUpperCase() + text.substring(1)).replace('_', ' ')}:
+            </label>
+          </div>
+          <div className='col text-start'>
+            <select
+              id={`${id.toLowerCase().replace(' ', '-')}-select`}
+              className='me-2'
+              value={currentValue}
+              onChange={handleSelect}
+            >
+              {content.map((value, index) => {
+                return (
+                  <option
+                    key={index}
+                    value={value.toLowerCase().replace(' ', '-')}
+                  >
+                    {value}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+      ) : labelLocation === 'above' ? (
+        <div className='left-aligned-input'>
+          <label
+            htmlFor={`${id.toLowerCase().replace(' ', '-')}-select`}
+            className={mandatory ? 'required' : ''}
+          >
+            {' '}
+            {(text[0].toUpperCase() + text.substring(1)).replace('_', ' ')}:
+          </label>
+          <select
+            id={`${id.toLowerCase().replace(' ', '-')}-select`}
+            className='me-2'
+            value={currentValue}
+            onChange={handleSelect}
+          >
+            {content.map((value, index) => {
+              return (
+                <option
+                  key={index}
+                  value={value.toLowerCase().replace(' ', '-')}
+                >
+                  {value}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      ) : null}
+    </>
+  );
 }

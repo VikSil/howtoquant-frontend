@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import GreenButton from '../primitives/GreenButton';
 import TableContainer from '../containers/TableContainer';
 import AccountAdd from './subpages/AccountAdd';
-import BrokerAdd from './subpages/BrokerAdd';
+import OrganizationAdd from './subpages/OrganizationAdd';
 
 import { getGenericRequest, getOrganizations } from '../../utils/api_get';
 
@@ -50,7 +50,7 @@ export default function PBAccount() {
             fetchKey={'organizations'}
           />
         ) : subpage === 'newPB' ? (
-          <BrokerAdd />
+          <OrganizationAdd orgType='Prime Broker' />
         ) : subpage === 'viewAccounts' ? (
           <TableContainer
             title={'All PB Accounts'}

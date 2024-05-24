@@ -4,11 +4,12 @@ const APIroot = 'http://127.0.0.1:8000/';
 const paths = {
   'books': 'accounting/api/books',
   'equities': 'staticdata/api/equities',
-  'fund_names':'staticdata/api/organizations/fund_names',
+  'fund_names': 'staticdata/api/organizations/fund_names',
   'identifierCodes': 'staticdata/api/identifiers/codes',
   'identifiers': 'staticdata/api/identifiers',
   'identifierTypes': 'staticdata/api/identifier_types',
   'pbaccounts': 'accounting/api/pbaccounts',
+  'parent_org_names': 'staticdata/api/organizations/parent_org_names',
   'prices': 'marketdata/api/prices',
   'strategies': 'accounting/api/strategies',
 };
