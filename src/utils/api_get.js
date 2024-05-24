@@ -3,13 +3,14 @@ import axios from 'axios';
 const APIroot = 'http://127.0.0.1:8000/';
 const paths = {
   'books': 'accounting/api/books',
-  'strategies': 'accounting/api/strategies',
-  'pbaccounts': 'accounting/api/pbaccounts',
-  'identifierTypes': 'staticdata/api/identifier_types',
-  'identifierCodes': 'staticdata/api/identifiers/codes',
   'equities': 'staticdata/api/equities',
+  'fund_names':'staticdata/api/organizations/fund_names',
+  'identifierCodes': 'staticdata/api/identifiers/codes',
   'identifiers': 'staticdata/api/identifiers',
+  'identifierTypes': 'staticdata/api/identifier_types',
+  'pbaccounts': 'accounting/api/pbaccounts',
   'prices': 'marketdata/api/prices',
+  'strategies': 'accounting/api/strategies',
 };
 
 export const getGenericRequest = (path) => {

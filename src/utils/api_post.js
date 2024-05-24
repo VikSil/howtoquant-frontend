@@ -18,3 +18,15 @@ export const postStrategies = (name, description) => {
         throw error;
       });
   };
+
+  export const postOrganizations = (data) => {
+    let URL = APIroot + 'staticdata/api/organizations';
+    return axios
+      .post(URL, data)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };

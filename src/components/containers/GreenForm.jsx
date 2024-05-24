@@ -4,9 +4,10 @@ import GreenButton from '../primitives/GreenButton';
 import GreenTextBox from '../primitives/GreenTextBox';
 import GreenCheckBox from '../primitives/GreenCheckBox';
 import GreenRadioButtons from '../primitives/GreenRadioButtons';
+import GreenSelect from '../primitives/GreenSelect';
 
 export default function GreenForm(props) {
-  const { formTitle, onSubmit, formList, submitResult } = props;
+  const { formTitle, onSubmit, formList, submitResult} = props;
 
   /*
         formList = [
@@ -17,7 +18,8 @@ export default function GreenForm(props) {
         ]
     */
 
-  const [unfilledFieldsErr, setUnfilledFieldsErr] = useState(false);
+  const [error, setError] = useState(false);
+  
 
 
   const submitFunction = (event) => {
@@ -29,10 +31,10 @@ export default function GreenForm(props) {
     );
     if (emptyFields.length > 0) {
       // if there are empty mandatory fields
-      setUnfilledFieldsErr('Please fill out all mandatory fields');
+      setError('Please fill out all mandatory fields');
     } else {
       // if all mandatory fields are filled - do whatever the form does
-      setUnfilledFieldsErr('');
+      setError('');
       if (typeof onSubmit !== 'undefined') {
         onSubmit();
       }
@@ -90,9 +92,27 @@ export default function GreenForm(props) {
                   />
                 </fieldset>
               ))
+            : value.type == 'select'
+            ? (element = (
+                <fieldset key={index}>
+                  <GreenSelect
+                    text={value.props.text}
+                    labelLocation={value.props.labelLocation}
+                    id={value.props.id}
+                    fetchFunction = {value.props.fetchFunction}
+                    fetchKey={value.props.fetchKey}
+                    fetchParams={value.props.fetchParams}
+                    readOnly={value.props.readOnly}
+                    mandatory = {value.props.mandatory}
+                    currentValue={value.props.currentValue}
+                    length={value.props.length}
+                    onChange={value.props.onChange}
+                  />
+                </fieldset>
+              ))
             : (element = (
                 <p key={index}>
-                  this will be a combo-box that is not yet implemented
+                  Unrecognised element type
                 </p>
               ));
 
@@ -102,8 +122,8 @@ export default function GreenForm(props) {
       {submitResult && (
                   <p className='text-end pe-2 py-2'>{submitResult}</p>
                 )}
-      {unfilledFieldsErr && (
-        <p className='error-class text-end pe-2 py-2'>{unfilledFieldsErr}</p>
+      {error && (
+        <p className='error-class text-end pe-2 py-2'>{error}</p>
       )}
     </div>
   );

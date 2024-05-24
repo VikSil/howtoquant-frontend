@@ -58,7 +58,7 @@ export default function GreenTextBox(props) {
         <>
           <label
             htmlFor={`${id.toLowerCase().replace(' ', '-')}-input`}
-            className='me-2'
+            className={mandatory?'me-2 required':'me-2'}
           >
             {' '}
             {(text[0].toUpperCase() + text.substring(1)).replace('_', ' ')}:
@@ -74,7 +74,7 @@ export default function GreenTextBox(props) {
         </>
       ) : labelLocation === 'above' ? (
         <div className='left-aligned-input'>
-          <label htmlFor={`${id.toLowerCase().replace(' ', '-')}-input`}>
+          <label htmlFor={`${id.toLowerCase().replace(' ', '-')}-input`} className={mandatory?'required':''}>
             {' '}
             {(text[0].toUpperCase() + text.substring(1)).replace('_', ' ')}:
           </label>
