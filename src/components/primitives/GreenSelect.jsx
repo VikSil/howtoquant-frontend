@@ -37,6 +37,7 @@ export default function GreenSelect(props) {
   const [content, setContent] = useState(['', 'Retrieving options...']);
 
   useEffect(() => {
+    setContent(['', 'Retrieving options...']);
     if (fetchFunction) {
       fetchFunction(fetchParams)
         .then((data) => {
@@ -49,7 +50,7 @@ export default function GreenSelect(props) {
     } else {
       setContent(options);
     }
-  }, []);
+  }, [fetchParams]);
 
   const handleSelect = (event) => {
     if (typeof onChange !== 'undefined') {

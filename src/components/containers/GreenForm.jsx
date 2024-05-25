@@ -7,7 +7,7 @@ import GreenRadioButtons from '../primitives/GreenRadioButtons';
 import GreenSelect from '../primitives/GreenSelect';
 
 export default function GreenForm(props) {
-  const { formTitle, onSubmit, formList, submitResult} = props;
+  const { formTitle, onSubmit, formList, submitResult } = props;
 
   /*
         formList = [
@@ -19,15 +19,16 @@ export default function GreenForm(props) {
     */
 
   const [error, setError] = useState(false);
-  
-
 
   const submitFunction = (event) => {
     event.preventDefault();
     // Check if any of the mandatory fields are left empty
     const emptyFields = formList.filter(
       (element) =>
-        element.props.mandatory === true && element.props.value.length === 0
+        element.props.mandatory === true &&
+        ((element.type === 'textbox' && element.props.value.length === 0) ||
+          (element.type === 'select' &&
+            element.props.currentValue.length === 0))
     );
     if (emptyFields.length > 0) {
       // if there are empty mandatory fields
@@ -49,7 +50,7 @@ export default function GreenForm(props) {
           let element = '';
           value.type == 'button'
             ? (element = (
-                <fieldset className='pb-2 text-end' key={index}>
+                <fieldset className='pb-2 text-end me-2' key={index}>
                   <GreenButton
                     text={value.props.text}
                     id={value.props.id}
@@ -61,7 +62,7 @@ export default function GreenForm(props) {
               ))
             : value.type == 'checkbox'
             ? (element = (
-                <fieldset className='pb-2 text-end' key={index}>
+                <fieldset className='pb-2 text-end mt-2 me-2' key={index}>
                   <GreenCheckBox
                     text={value.props.text}
                     title={value.props.title}
@@ -73,7 +74,7 @@ export default function GreenForm(props) {
               ))
             : value.type == 'radiogroup'
             ? (element = (
-                <fieldset className='pb-2 text-end' key={index}>
+                <fieldset className='pb-2 text-end me-2' key={index}>
                   <GreenRadioButtons radioProps={value.props} key={index} />
                 </fieldset>
               ))
@@ -85,7 +86,7 @@ export default function GreenForm(props) {
                     labelLocation={value.props.labelLocation}
                     id={value.props.id}
                     readOnly={value.props.readOnly}
-                    mandatory = {value.props.mandatory}
+                    mandatory={value.props.mandatory}
                     value={value.props.value}
                     length={value.props.length}
                     onChange={value.props.onChange}
@@ -99,32 +100,24 @@ export default function GreenForm(props) {
                     text={value.props.text}
                     labelLocation={value.props.labelLocation}
                     id={value.props.id}
-                    fetchFunction = {value.props.fetchFunction}
+                    fetchFunction={value.props.fetchFunction}
                     fetchKey={value.props.fetchKey}
                     fetchParams={value.props.fetchParams}
                     readOnly={value.props.readOnly}
-                    mandatory = {value.props.mandatory}
+                    mandatory={value.props.mandatory}
                     currentValue={value.props.currentValue}
                     length={value.props.length}
                     onChange={value.props.onChange}
                   />
                 </fieldset>
               ))
-            : (element = (
-                <p key={index}>
-                  Unrecognised element type
-                </p>
-              ));
+            : (element = <p key={index}>Unrecognised element type</p>);
 
           return element;
         })}
       </form>
-      {submitResult && (
-                  <p className='text-end pe-2 py-2'>{submitResult}</p>
-                )}
-      {error && (
-        <p className='error-class text-end pe-2 py-2'>{error}</p>
-      )}
+      {submitResult && <p className='text-end pe-2 py-2'>{submitResult}</p>}
+      {error && <p className='error-class text-end pe-2 py-2'>{error}</p>}
     </div>
   );
 }

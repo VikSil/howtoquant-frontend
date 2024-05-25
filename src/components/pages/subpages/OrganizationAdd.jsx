@@ -106,7 +106,7 @@ export default function OrganizationAdd(props) {
 
   return (
     <GreenForm
-      formTitle={orgType === 'Fund' ? 'New Fund' : 'New Broker'}
+      formTitle={orgType === 'Fund' ? 'New Fund' : 'New Prime Broker'}
       formList={orgData}
       onSubmit={submitOrgData}
       submitResult={postResponse}

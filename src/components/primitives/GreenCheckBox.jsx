@@ -1,8 +1,7 @@
-export default function GreenCheckBox(props){
+export default function GreenCheckBox(props) {
+  const { title, text, id, disabled, checked } = props;
 
-    const {title, text,  id, disabled, checked}= props
-
-    /*
+  /*
     PROPS
 
     "title" : str - title above the checkbox,
@@ -13,15 +12,19 @@ export default function GreenCheckBox(props){
     
     */
 
-
-    return (
-        <>
-            <legend className='mb-0'>
-                <strong >
-                    {title}:
-                </strong>
-            </legend>
-                {/* Checkbox styling is controlled by OS, will have to eventually replace by Material UI component */}
-            <input type="checkbox" id = {id} disabled= {disabled} defaultChecked = {checked}/><label className='ps-2'>{text}</label>
-        </>)
+  return (
+    <>
+      <legend className='mb-0'>
+        <strong>{title}</strong>
+      </legend>
+      {/* Checkbox styling is controlled by OS, will have to eventually replace by Material UI component */}
+      <input
+        type='checkbox'
+        id={id}
+        disabled={disabled}
+        defaultChecked={checked}
+      />
+      <label className='ps-2 '>{text}</label>
+    </>
+  );
 }
