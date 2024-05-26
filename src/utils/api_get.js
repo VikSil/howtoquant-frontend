@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APIroot = 'http://127.0.0.1:8000/';
+const APIroot = 'https://howtoquant.pythonanywhere.com/';
 const paths = {
   'accounting_method_names': 'classifiers/api/accounting_methods/names',
   'account_names': 'accounting/api/pbaccounts/names',

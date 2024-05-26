@@ -24,11 +24,10 @@ function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   /* THIS WILL BE RETURNED FROM BACKEND CONFIG APP, DEPENDING ON USER PERMISSIONS  */
-  const [categories, setCategories] = useState([
+  const [categories] = useState([
     { 'instruments': ['equities', 'new instrument'] },
     { 'market data': ['identifiers', 'prices'] },
     { 'organizations': ['funds', 'books', 'strategies', 'PB accounts'] },
-    { 'Test': ['test'] },
   ]);
 
   const [routes, setRoutes] = useState([]);
