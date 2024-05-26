@@ -68,7 +68,8 @@ export default function GreenForm(props) {
                     title={value.props.title}
                     id={value.props.id}
                     disabled={value.props.disabled}
-                    defaultChecked={value.props.checked}
+                    checked={value.props.checked}
+                    onChange={value.props.onChange}
                   />
                 </fieldset>
               ))

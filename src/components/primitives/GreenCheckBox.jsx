@@ -1,5 +1,5 @@
 export default function GreenCheckBox(props) {
-  const { title, text, id, disabled, checked } = props;
+  const { title, text, id, disabled, checked, onChange } = props;
 
   /*
     PROPS
@@ -9,8 +9,14 @@ export default function GreenCheckBox(props) {
     "id" : str - id of the textbox,
     "disabled" : bool - whether the checkbox is read only or not - optional, defaults to false,
     "checked" : bool - whether the checkbox is checked or not - optional, defaults to false,
-    
+    "onChange" : callback function, will invert 'checked' value - optional    
     */
+
+  const handleCheckbox = (event) => {
+    if (typeof onChange !== 'undefined') {
+      onChange(event.target.checked);
+    }
+  };
 
   return (
     <>
@@ -22,7 +28,8 @@ export default function GreenCheckBox(props) {
         type='checkbox'
         id={id}
         disabled={disabled}
-        defaultChecked={checked}
+        checked={checked}
+        onChange={handleCheckbox}
       />
       <label className='ps-2 '>{text}</label>
     </>

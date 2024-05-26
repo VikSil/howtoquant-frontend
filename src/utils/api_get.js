@@ -7,16 +7,22 @@ const paths = {
   'books': 'accounting/api/books',
   'ccies': 'classifiers/api/currencies',
   'ccy_codes': 'classifiers/api/currencies/codes',
+  'country_names': 'classifiers/api/countries/names',
   'equities': 'staticdata/api/equities',
   'fund_names': 'staticdata/api/organizations/fund_names',
   'identifierCodes': 'staticdata/api/identifiers/codes',
   'identifiers': 'staticdata/api/identifiers',
-  'identifierTypes': 'staticdata/api/identifier_types',
+  'inst_class_names': 'classifiers/api/inst_classes/class_names',
+  'issuer_names': 'staticdata/api/organizations/issuer_names',
   'pbaccounts': 'accounting/api/pbaccounts',
   'broker_names': 'staticdata/api/organizations/broker_names',
   'parent_org_names': 'staticdata/api/organizations/parent_org_names',
   'prices': 'marketdata/api/prices',
+  'sector_names': 'classifiers/api/sectors/names',
+  'subsector_names': 'classifiers/api/subsectors/names',
   'strategies': 'accounting/api/strategies',
+  'ticker_types': 'classifiers/api/ticker_types',
+  'ticker_type_names': 'classifiers/api/ticker_types/names',
 };
 
 export const getGenericRequest = (path) => {

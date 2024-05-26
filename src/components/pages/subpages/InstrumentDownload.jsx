@@ -24,6 +24,7 @@ export default function InstrumentDownload() {
   }, []);
 
   const triggerDownload = (event) => {
+    setInstId(null);
     setIsExistingTicker(false);
     const newDownload = {
       'ticker': ticker,

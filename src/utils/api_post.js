@@ -14,6 +14,18 @@ export const postBooks = (data) => {
     });
 };
 
+export const postInstruments = (data) => {
+  let URL = APIroot + 'staticdata/api/instruments';
+  return axios
+    .post(URL, data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const postOrganizations = (data) => {
   let URL = APIroot + 'staticdata/api/organizations';
   return axios
