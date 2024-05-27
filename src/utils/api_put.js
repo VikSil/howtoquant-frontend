@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APIroot = 'https://howtoquant.pythonanywhere.com/';
+const APIroot = 'https://h0wt0quant.pythonanywhere.com/';
 
 export const putInstrumentDownload = (data) => {
   let URL = APIroot + 'staticdata/api/instruments';
