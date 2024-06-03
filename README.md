@@ -1,4 +1,4 @@
-# Release Notes
+# Release notes
 
 * Version number added in the title bar (very important! 😁)
 * Handling of 5xx error codes added
