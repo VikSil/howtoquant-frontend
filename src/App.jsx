@@ -18,7 +18,7 @@ import MainArea from './components/pages/MainArea';
 import TableContainer from './components/containers/TableContainer';
 
 import { getGenericRequest } from './utils/api_get';
-import Loading from './components/stateless/Loading';
+import Loading from './components/static/Loading';
 
 function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);

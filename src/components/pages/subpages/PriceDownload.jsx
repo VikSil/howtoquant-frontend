@@ -8,7 +8,7 @@ import GreenCheckBox from '../../primitives/GreenCheckBox';
 
 import { getGenericRequest } from '../../../utils/api_get';
 import { putPriceDownload } from '../../../utils/api_put';
-import Loading from '../../stateless/Loading';
+import Loading from '../../static/Loading';
 
 export default function PriceDownload(props) {
   const { callbackFunc } = props;

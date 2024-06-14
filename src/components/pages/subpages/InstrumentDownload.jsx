@@ -7,7 +7,7 @@ import GreenCheckBox from '../../primitives/GreenCheckBox';
 
 import { getGenericRequest } from '../../../utils/api_get';
 import { putInstrumentDownload } from '../../../utils/api_put';
-import Loading from '../../stateless/Loading';
+import Loading from '../../static/Loading';
 
 export default function InstrumentDownload() {
   const [isLoading, setIsLoading] = useState(false);

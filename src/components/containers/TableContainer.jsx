@@ -1,7 +1,7 @@
 import {useEffect, useState } from 'react'
 
-import Loading from '../stateless/Loading';
-import Error from '../stateless/Error';
+import Loading from '../static/Loading';
+import Error from '../static/Error';
 
 import GreenTable from '../primitives/GreenTable';
 

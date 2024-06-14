@@ -4,8 +4,8 @@ import GreenButton from '../../primitives/GreenButton';
 import GreenTextBox from '../../primitives/GreenTextBox';
 import GreenForm from '../../containers/GreenForm';
 
-import Loading from '../../stateless/Loading';
-import Error from '../../stateless/Error';
+import Loading from '../../static/Loading';
+import Error from '../../static/Error';
 
 import { getInstrumentByTicker } from '../../../utils/api_get';
 
