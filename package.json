@@ -16,8 +16,7 @@
     "react-multi-date-picker": "^4.4.1",
     "react-router-dom": "^6.22.3",
     "react-table": "^7.8.0",
-    "regenerator-runtime": "^0.14.1",
-    "spinners-react": "^1.0.7"
+    "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

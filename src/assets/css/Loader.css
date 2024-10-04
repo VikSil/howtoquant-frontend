@@ -1,0 +1,15 @@
+.spinner {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: #556b2f rgba(85,107,47,0.3);
+    animation: spinner-0tkp9a 1s infinite;
+    margin: 0 auto;
+ }
+ 
+ @keyframes spinner-0tkp9a {
+    to {
+       transform: rotate(.5turn);
+    }
+ }
